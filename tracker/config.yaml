@@ -1,0 +1,66 @@
+# CDMX Doctores Daily Listing Tracker — Configuration
+# Portal ToS may prohibit scraping. Output is for private research only.
+
+price_min: 1240000        # 1,550,000 * 0.80
+price_max: 1860000        # 1,550,000 * 1.20
+anchor_price: 1550000
+bedrooms_min: 2
+area_min_m2: 40
+area_max_m2: 75
+
+colonias:
+  - {name: "Doctores",              alcaldia: "Cuauhtémoc", tier: 1}
+  - {name: "Obrera",                alcaldia: "Cuauhtémoc", tier: 1}
+  - {name: "Algarín",               alcaldia: "Cuauhtémoc", tier: 1}
+  - {name: "Buenos Aires",          alcaldia: "Cuauhtémoc", tier: 2}
+  - {name: "Centro",                alcaldia: "Cuauhtémoc", tier: 2}
+  - {name: "Guerrero",              alcaldia: "Cuauhtémoc", tier: 2}
+  - {name: "Roma Sur",              alcaldia: "Cuauhtémoc", tier: 2}
+  - {name: "Santa María la Ribera", alcaldia: "Cuauhtémoc", tier: 2}
+
+assumptions:
+  vacancy_weeks: 4
+  maintenance_mxn_month: 1500
+  predial_mxn_year: 1800
+  insurance_mxn_year: 3500
+  repair_reserve_pct: 0.01
+  mortgage_rate_annual: 0.1045
+  cetes_364d: 0.0717
+  inflation: 0.042
+
+sources_enabled: [icasas, lamudi, vivanuncios, inmuebles24, propiedades, mudafy]
+
+rate_limit:
+  min_delay_s: 2.0
+  max_delay_s: 5.0
+
+dedup:
+  distance_m: 60
+  area_tolerance: 0.05
+  price_tolerance: 0.05
+  address_fuzzy_threshold: 90
+
+relist_gap_days: 7
+sold_threshold_days: 14
+
+scoring_weights:
+  neg_price_per_m2: 0.3
+  gross_yield: 0.3
+  neg_grm: 0.2
+  discount_vs_colonia: 0.2
+
+alert_value_score: 2.0
+alert_drop_bp: 500
+
+rent_model:
+  refit_day: 0          # Monday
+  min_comps: 15
+  prediction_interval: 0.80
+
+quarantine:
+  area_min: 20
+  area_max: 200
+  price_min: 400000
+  price_max: 6000000
+  bedrooms_min: 0
+  bedrooms_max: 6

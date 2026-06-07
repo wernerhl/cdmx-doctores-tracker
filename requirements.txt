@@ -1,0 +1,6 @@
+playwright>=1.40.0
+playwright-stealth>=1.0.6
+pyyaml>=6.0
+numpy>=1.24.0
+thefuzz[speedup]>=0.20.0
+pytest>=7.0.0

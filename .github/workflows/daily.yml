@@ -1,0 +1,116 @@
+name: CDMX Doctores Daily Listing Tracker
+
+on:
+  schedule:
+    - cron: '0 13 * * *'  # 07:00 CDMX (UTC-6)
+  workflow_dispatch:
+    inputs:
+      run_date:
+        description: 'Override run date (YYYY-MM-DD)'
+        required: false
+        type: string
+
+permissions:
+  contents: write
+  issues: write
+
+env:
+  PROXY_URL: ${{ secrets.PROXY_URL }}
+  TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+  TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+  GOOGLE_MAPS_KEY: ${{ secrets.GOOGLE_MAPS_KEY }}
+
+jobs:
+  run-tracker:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Install Playwright browsers
+        run: playwright install chromium --with-deps
+
+      - name: Determine run date
+        id: date
+        run: |
+          if [ -n "${{ inputs.run_date }}" ]; then
+            echo "run_date=${{ inputs.run_date }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "run_date=$(date -u +%F)" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Run pipeline
+        id: pipeline
+        run: |
+          python -m tracker.run --date ${{ steps.date.outputs.run_date }}
+        continue-on-error: true
+
+      - name: Upload raw cache as artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: raw-cache-${{ steps.date.outputs.run_date }}
+          path: cache/raw/
+          retention-days: 14
+
+      - name: Commit data and reports on success
+        if: steps.pipeline.outcome == 'success'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/ reports/ models/ tracker.sqlite
+          git diff --cached --quiet || git commit -m "Daily run: ${{ steps.date.outputs.run_date }}"
+          git push
+
+      - name: Open/update failure issue
+        if: steps.pipeline.outcome == 'failure'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const title = `Pipeline failure: ${process.env.RUN_DATE || 'unknown date'}`;
+            const body = `The daily tracker pipeline failed on \`${{ steps.date.outputs.run_date }}\`.\n\n` +
+              `**Run:** ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}\n\n` +
+              `Check the logs for details. Common causes:\n` +
+              `- All sources blocked (datacenter IP)\n` +
+              `- Playwright browser install failed\n` +
+              `- Site layout changed (parser broke)\n`;
+
+            const issues = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'pipeline-failure',
+            });
+
+            if (issues.data.length > 0) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issues.data[0].number,
+                body: body,
+              });
+            } else {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: title,
+                body: body,
+                labels: ['pipeline-failure'],
+              });
+            }
+
+      - name: Fail the workflow if pipeline failed
+        if: steps.pipeline.outcome == 'failure'
+        run: exit 1

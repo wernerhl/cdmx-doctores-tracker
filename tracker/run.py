@@ -35,7 +35,7 @@ async def run_pipeline(run_date: date, config: dict) -> bool:
         DB_PATH, DB_TEMP,
     )
     from tracker.analyze import score_and_rank, compute_market_aggregates
-    from tracker.report import generate_daily_report, save_report, save_snapshot_csv
+    from tracker.report import generate_daily_report, save_report, save_snapshot_csv, save_listings_json
     from tracker.alert import check_and_send_alerts
 
     logger.info(f"=== Pipeline start: {run_date} ===")
@@ -232,6 +232,12 @@ async def run_pipeline(run_date: date, config: dict) -> bool:
     )
     save_report(report, run_date)
     save_snapshot_csv(deduped, indicators_map, run_date)
+    save_listings_json(deduped, indicators_map, run_date)
+
+    # Copy listings JSON to docs/ for dashboard
+    if docs_data.exists():
+        shutil.copy2("data/listings.json", docs_data / "listings.json")
+        logger.info("Copied listings.json to docs/data/ for dashboard")
 
     check_and_send_alerts(regular, changes, config)
 

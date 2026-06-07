@@ -126,6 +126,47 @@
     }
     tr:hover td { background: rgba(99,102,241,0.05); }
     .num { text-align: right; font-variant-numeric: tabular-nums; }
+    a.prop-link {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    a.prop-link:hover { text-decoration: underline; }
+    .badge {
+      display: inline-block;
+      padding: 0.15rem 0.45rem;
+      border-radius: 0.25rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .badge-recovery { background: #ef44441a; color: var(--red); border: 1px solid #ef444433; }
+    .badge-suspicious { background: #eab3081a; color: var(--yellow); border: 1px solid #eab30833; }
+    .badge-fallback { background: #64748b1a; color: var(--muted); border: 1px solid #64748b33; }
+    .badge-source { background: #6366f11a; color: var(--accent); border: 1px solid #6366f133; }
+    .sort-btn { cursor: pointer; user-select: none; }
+    .sort-btn:hover { color: var(--accent); }
+    .sort-btn::after { content: ' ↕'; font-size: 0.65rem; }
+    .listings-controls {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+    .listings-controls input {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.4rem 0.75rem;
+      border-radius: 0.5rem;
+      font-size: 0.85rem;
+      flex: 1;
+      min-width: 180px;
+    }
+    .listings-controls input::placeholder { color: var(--muted); }
+    .listing-count { color: var(--muted); font-size: 0.8rem; white-space: nowrap; }
   </style>
 </head>
 <body>
@@ -166,6 +207,34 @@
       <div class="chart-section">
         <h2>Daily Flow (New / Sold)</h2>
         <div class="chart-wrap"><canvas id="chartFlow"></canvas></div>
+      </div>
+
+      <div class="chart-section" id="listingsSection" style="display:none">
+        <h2>All Properties</h2>
+        <div class="listings-controls">
+          <input type="text" id="listingsSearch" placeholder="Search colonia, address, source...">
+          <span class="listing-count" id="listingsCount"></span>
+        </div>
+        <div style="overflow-x:auto">
+          <table id="listingsTable">
+            <thead>
+              <tr>
+                <th class="sort-btn" data-col="colonia">Colonia</th>
+                <th class="sort-btn num" data-col="price">Price</th>
+                <th class="sort-btn num" data-col="area">m&sup2;</th>
+                <th class="num">Beds</th>
+                <th class="sort-btn num" data-col="ppm2">$/m&sup2;</th>
+                <th class="sort-btn num" data-col="yield">Yield</th>
+                <th class="num">Yield Band</th>
+                <th class="sort-btn num" data-col="cap_rate">Cap Rate</th>
+                <th class="sort-btn num" data-col="discount">Discount</th>
+                <th>Source</th>
+                <th>Link</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
       </div>
 
       <div class="chart-section">
@@ -300,6 +369,94 @@
       }
 
       rebuild();
+
+      // Load listings
+      loadListings();
+    }
+
+    async function loadListings() {
+      try {
+        const resp = await fetch('data/listings.json');
+        if (!resp.ok) return;
+        const payload = await resp.json();
+        const listings = payload.listings || [];
+        if (!listings.length) return;
+
+        document.getElementById('listingsSection').style.display = 'block';
+        let sortCol = 'yield', sortAsc = false;
+        let searchTerm = '';
+
+        function renderListings() {
+          let filtered = listings;
+          if (searchTerm) {
+            const q = searchTerm.toLowerCase();
+            filtered = listings.filter(l =>
+              (l.colonia || '').toLowerCase().includes(q) ||
+              (l.alcaldia || '').toLowerCase().includes(q) ||
+              (l.source || '').toLowerCase().includes(q) ||
+              (l.url || '').toLowerCase().includes(q)
+            );
+          }
+
+          filtered.sort((a, b) => {
+            let va = a[sortCol] ?? 0, vb = b[sortCol] ?? 0;
+            if (typeof va === 'string') { va = va.toLowerCase(); vb = (vb || '').toLowerCase(); }
+            if (va < vb) return sortAsc ? -1 : 1;
+            if (va > vb) return sortAsc ? 1 : -1;
+            return 0;
+          });
+
+          document.getElementById('listingsCount').textContent =
+            filtered.length + ' of ' + listings.length + ' properties';
+
+          const tbody = document.querySelector('#listingsTable tbody');
+          tbody.innerHTML = '';
+          filtered.forEach(l => {
+            const tr = document.createElement('tr');
+            const yieldBand = l.yield_lo != null ? l.yield_lo.toFixed(1) + '–' + l.yield_hi.toFixed(1) + '%' : '—';
+            let badges = '';
+            if (l.is_recovery) badges += ' <span class="badge badge-recovery">Recovery</span>';
+            if (l.suspicious) badges += ' <span class="badge badge-suspicious">Suspicious</span>';
+            if (l.rent_source === 'fallback') badges += ' <span class="badge badge-fallback">Fallback</span>';
+
+            const domain = l.url ? new URL(l.url).hostname.replace('www.','').split('.')[0] : l.source;
+
+            tr.innerHTML = '' +
+              '<td>' + (l.colonia || '—') + badges + '</td>' +
+              '<td class="num">$' + fmt(l.price) + '</td>' +
+              '<td class="num">' + (l.area || '—') + '</td>' +
+              '<td class="num">' + (l.beds || '—') + '</td>' +
+              '<td class="num">$' + fmt(l.ppm2) + '</td>' +
+              '<td class="num">' + (l.yield != null ? l.yield.toFixed(1) + '%' : '—') + '</td>' +
+              '<td class="num">' + yieldBand + '</td>' +
+              '<td class="num">' + (l.cap_rate != null ? l.cap_rate.toFixed(1) + '%' : '—') + '</td>' +
+              '<td class="num">' + (l.discount != null ? (l.discount >= 0 ? '+' : '') + l.discount.toFixed(1) + '%' : '—') + '</td>' +
+              '<td><span class="badge badge-source">' + domain + '</span></td>' +
+              '<td>' + (l.url ? '<a class="prop-link" href="' + l.url + '" target="_blank" rel="noopener">View &rarr;</a>' : '—') + '</td>';
+            tbody.appendChild(tr);
+          });
+        }
+
+        // Sort handlers
+        document.querySelectorAll('#listingsTable .sort-btn').forEach(th => {
+          th.addEventListener('click', () => {
+            const col = th.dataset.col;
+            if (sortCol === col) { sortAsc = !sortAsc; }
+            else { sortCol = col; sortAsc = false; }
+            renderListings();
+          });
+        });
+
+        // Search handler
+        document.getElementById('listingsSearch').addEventListener('input', e => {
+          searchTerm = e.target.value;
+          renderListings();
+        });
+
+        renderListings();
+      } catch (e) {
+        console.warn('listings.json not available:', e);
+      }
     }
 
     function makeBtn(label, active) {

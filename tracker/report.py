@@ -226,3 +226,52 @@ def save_snapshot_csv(listings: list, indicators_map: dict, run_date: date) -> s
 
     logger.info(f"Snapshot CSV saved to {path}")
     return str(path)
+
+
+def save_listings_json(listings: list, indicators_map: dict, run_date: date) -> str:
+    path = Path("data") / "listings.json"
+    path.parent.mkdir(parents=True, exist_ok=True)
+
+    records = []
+    for listing in listings:
+        if listing.quarantine_reason or listing.listing_type != "sale":
+            continue
+        if not listing.price_mxn or not listing.area_m2:
+            continue
+        ind = indicators_map.get(listing.property_uid)
+        rec = {
+            "uid": listing.property_uid,
+            "source": listing.source,
+            "url": listing.url,
+            "colonia": listing.colonia or "",
+            "alcaldia": listing.alcaldia or "",
+            "price": listing.price_mxn,
+            "area": round(listing.area_m2, 1),
+            "beds": listing.bedrooms or 0,
+            "baths": listing.bathrooms or 0,
+            "parking": listing.parking or 0,
+            "is_recovery": listing.is_recovery,
+            "recovery_flags": listing.recovery_flags or [],
+            "first_seen": str(listing.first_seen),
+            "last_seen": str(listing.last_seen),
+        }
+        if ind:
+            rec.update({
+                "ppm2": round(ind.price_per_m2, 0),
+                "yield": round(ind.gross_yield * 100, 1),
+                "yield_lo": round(ind.gross_yield_lo * 100, 1),
+                "yield_hi": round(ind.gross_yield_hi * 100, 1),
+                "cap_rate": round(ind.cap_rate * 100, 1),
+                "grm": round(ind.grm, 1),
+                "discount": round(ind.discount_vs_colonia * 100, 1),
+                "rent_source": listing.rent_source,
+                "suspicious": ind.suspicious_cheap,
+            })
+        records.append(rec)
+
+    records.sort(key=lambda r: r.get("yield", 0), reverse=True)
+
+    with open(path, "w") as f:
+        json.dump({"run_date": str(run_date), "listings": records}, f, indent=2)
+    logger.info(f"Listings JSON saved to {path} ({len(records)} properties)")
+    return str(path)

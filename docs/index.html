@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CDMX Doctores — Listing Tracker</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3"></script>
+  <style>
+    :root {
+      --bg: #0f1117;
+      --surface: #1a1d27;
+      --border: #2a2d3a;
+      --text: #e4e4e7;
+      --muted: #9ca3af;
+      --accent: #6366f1;
+      --green: #22c55e;
+      --red: #ef4444;
+      --yellow: #eab308;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 1.5rem; }
+    header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+    h1 { font-size: 1.5rem; font-weight: 600; }
+    h1 span { color: var(--accent); }
+    .subtitle { color: var(--muted); font-size: 0.875rem; margin-top: 0.25rem; }
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .kpi-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      padding: 1.25rem;
+    }
+    .kpi-label { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+    .kpi-value { font-size: 1.75rem; font-weight: 700; margin-top: 0.25rem; }
+    .kpi-delta { font-size: 0.8rem; margin-top: 0.25rem; }
+    .kpi-delta.up { color: var(--green); }
+    .kpi-delta.down { color: var(--red); }
+    .chart-section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .chart-section h2 { font-size: 1rem; font-weight: 600; margin-bottom: 1rem; }
+    .chart-wrap { position: relative; height: 300px; }
+    .filter-bar {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+    .filter-btn {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 0.4rem 0.9rem;
+      border-radius: 2rem;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+    .empty-state {
+      text-align: center;
+      padding: 4rem 1rem;
+      color: var(--muted);
+    }
+    .empty-state h2 { font-size: 1.25rem; color: var(--text); margin-bottom: 0.5rem; }
+    .empty-state p { max-width: 500px; margin: 0 auto; font-size: 0.9rem; }
+    .empty-state code {
+      display: inline-block;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 0.2rem 0.5rem;
+      border-radius: 0.25rem;
+      font-size: 0.85rem;
+      margin-top: 1rem;
+    }
+    footer {
+      border-top: 1px solid var(--border);
+      padding-top: 1rem;
+      margin-top: 2rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-align: center;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+    th {
+      text-align: left;
+      color: var(--muted);
+      font-weight: 500;
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    td {
+      padding: 0.6rem 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+    tr:hover td { background: rgba(99,102,241,0.05); }
+    .num { text-align: right; font-variant-numeric: tabular-nums; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1><span>&#9679;</span> CDMX Doctores Listing Tracker</h1>
+      <div class="subtitle">Daily apartment market data &mdash; Cuauht&eacute;moc colonias</div>
+    </header>
+
+    <div id="app">
+      <div class="empty-state" id="empty">
+        <h2>No data yet</h2>
+        <p>Run the pipeline to generate time-series data. The dashboard reads from <code>data/market_timeseries.json</code>.</p>
+        <code>python -m tracker.run</code>
+      </div>
+    </div>
+
+    <div id="dashboard" style="display:none">
+      <div class="kpi-grid" id="kpis"></div>
+
+      <div class="filter-bar" id="filters"></div>
+
+      <div class="chart-section">
+        <h2>Median Price / m&sup2;</h2>
+        <div class="chart-wrap"><canvas id="chartPrice"></canvas></div>
+      </div>
+
+      <div class="chart-section">
+        <h2>Median Gross Yield</h2>
+        <div class="chart-wrap"><canvas id="chartYield"></canvas></div>
+      </div>
+
+      <div class="chart-section">
+        <h2>Active Inventory</h2>
+        <div class="chart-wrap"><canvas id="chartInventory"></canvas></div>
+      </div>
+
+      <div class="chart-section">
+        <h2>Daily Flow (New / Sold)</h2>
+        <div class="chart-wrap"><canvas id="chartFlow"></canvas></div>
+      </div>
+
+      <div class="chart-section">
+        <h2>Latest Colonia Breakdown</h2>
+        <div style="overflow-x:auto">
+          <table id="coloniaTable">
+            <thead>
+              <tr>
+                <th>Colonia</th>
+                <th class="num">Active</th>
+                <th class="num">Med $/m&sup2;</th>
+                <th class="num">P25</th>
+                <th class="num">P75</th>
+                <th class="num">Yield</th>
+                <th class="num">New</th>
+                <th class="num">Sold</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      Data for private research only. Portal ToS may prohibit scraping.
+      &bull; <a href="https://github.com/wernerhl/cdmx-doctores-tracker" style="color:var(--accent)">Source</a>
+    </footer>
+  </div>
+
+  <script>
+    const COLORS = [
+      '#6366f1','#22c55e','#eab308','#ef4444','#06b6d4',
+      '#f97316','#8b5cf6','#ec4899','#14b8a6','#64748b'
+    ];
+
+    async function init() {
+      let data;
+      try {
+        const resp = await fetch('data/market_timeseries.json');
+        if (!resp.ok) throw new Error(resp.status);
+        data = await resp.json();
+      } catch (e) {
+        return; // show empty state
+      }
+
+      if (!data || data.length === 0) return;
+
+      document.getElementById('empty').style.display = 'none';
+      document.getElementById('dashboard').style.display = 'block';
+
+      const colonias = [...new Set(data.map(d => d.colonia))].filter(c => c !== '_TOTAL').sort();
+      let selected = new Set(colonias);
+
+      // Build filters
+      const filterBar = document.getElementById('filters');
+      const allBtn = makeBtn('All', true);
+      allBtn.addEventListener('click', () => {
+        selected = new Set(colonias);
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.add('active'));
+        rebuild();
+      });
+      filterBar.appendChild(allBtn);
+
+      colonias.forEach(c => {
+        const btn = makeBtn(c, true);
+        btn.addEventListener('click', () => {
+          if (selected.has(c)) { selected.delete(c); btn.classList.remove('active'); }
+          else { selected.add(c); btn.classList.add('active'); }
+          rebuild();
+        });
+        filterBar.appendChild(btn);
+      });
+
+      // KPIs from latest _TOTAL row
+      const totals = data.filter(d => d.colonia === '_TOTAL').sort((a,b) => a.run_date.localeCompare(b.run_date));
+      if (totals.length > 0) {
+        const latest = totals[totals.length - 1];
+        const prev = totals.length > 1 ? totals[totals.length - 2] : null;
+        const kpis = document.getElementById('kpis');
+        kpis.innerHTML = '';
+        addKPI(kpis, 'Active Listings', latest.n_active, prev?.n_active);
+        addKPI(kpis, 'Median $/m²', '$' + fmt(latest.median_price_per_m2), prev ? '$' + fmt(prev.median_price_per_m2) : null, true);
+        addKPI(kpis, 'Median Yield', (latest.median_gross_yield * 100).toFixed(1) + '%',
+          prev ? (prev.median_gross_yield * 100).toFixed(1) + '%' : null);
+        addKPI(kpis, 'New Today', latest.new_count, prev?.new_count);
+        addKPI(kpis, 'Sold Today', latest.presumed_sold_count, prev?.presumed_sold_count);
+      }
+
+      // Charts
+      const charts = {};
+
+      function rebuild() {
+        const filtered = data.filter(d => d.colonia !== '_TOTAL' && selected.has(d.colonia));
+        const dates = [...new Set(filtered.map(d => d.run_date))].sort();
+
+        // Price chart
+        buildChart('chartPrice', charts, colonias, selected, dates, filtered,
+          d => d.median_price_per_m2, v => '$' + fmt(v));
+
+        // Yield chart
+        buildChart('chartYield', charts, colonias, selected, dates, filtered,
+          d => (d.median_gross_yield * 100), v => v.toFixed(1) + '%');
+
+        // Inventory chart
+        buildChart('chartInventory', charts, colonias, selected, dates, filtered,
+          d => d.n_active, v => v.toString());
+
+        // Flow chart (stacked bar)
+        buildFlowChart('chartFlow', charts, dates, data);
+
+        // Table
+        const tbody = document.querySelector('#coloniaTable tbody');
+        tbody.innerHTML = '';
+        const latestDate = dates[dates.length - 1];
+        const latestRows = filtered.filter(d => d.run_date === latestDate)
+          .sort((a,b) => b.n_active - a.n_active);
+        latestRows.forEach(r => {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td>${r.colonia}</td>
+            <td class="num">${r.n_active}</td>
+            <td class="num">$${fmt(r.median_price_per_m2)}</td>
+            <td class="num">$${fmt(r.p25_price_per_m2)}</td>
+            <td class="num">$${fmt(r.p75_price_per_m2)}</td>
+            <td class="num">${(r.median_gross_yield*100).toFixed(1)}%</td>
+            <td class="num">${r.new_count}</td>
+            <td class="num">${r.presumed_sold_count}</td>
+          `;
+          tbody.appendChild(tr);
+        });
+      }
+
+      rebuild();
+    }
+
+    function makeBtn(label, active) {
+      const btn = document.createElement('button');
+      btn.className = 'filter-btn' + (active ? ' active' : '');
+      btn.textContent = label;
+      return btn;
+    }
+
+    function addKPI(container, label, value, prevValue, isCurrency) {
+      const card = document.createElement('div');
+      card.className = 'kpi-card';
+      let deltaHtml = '';
+      if (prevValue !== null && prevValue !== undefined) {
+        const curr = typeof value === 'string' ? parseFloat(value.replace(/[$,%]/g,'')) : value;
+        const prev = typeof prevValue === 'string' ? parseFloat(prevValue.replace(/[$,%]/g,'')) : prevValue;
+        if (!isNaN(curr) && !isNaN(prev) && prev !== 0) {
+          const pct = ((curr - prev) / Math.abs(prev) * 100).toFixed(1);
+          const cls = curr >= prev ? 'up' : 'down';
+          const arrow = curr >= prev ? '&#9650;' : '&#9660;';
+          deltaHtml = `<div class="kpi-delta ${cls}">${arrow} ${pct}% vs prev</div>`;
+        }
+      }
+      card.innerHTML = `
+        <div class="kpi-label">${label}</div>
+        <div class="kpi-value">${value}</div>
+        ${deltaHtml}
+      `;
+      container.appendChild(card);
+    }
+
+    function buildChart(canvasId, charts, colonias, selected, dates, filtered, valueFn, fmtFn) {
+      if (charts[canvasId]) charts[canvasId].destroy();
+      const datasets = [];
+      let ci = 0;
+      colonias.forEach(col => {
+        if (!selected.has(col)) { ci++; return; }
+        const colData = filtered.filter(d => d.colonia === col);
+        datasets.push({
+          label: col,
+          data: dates.map(dt => {
+            const row = colData.find(d => d.run_date === dt);
+            return row ? valueFn(row) : null;
+          }),
+          borderColor: COLORS[ci % COLORS.length],
+          backgroundColor: COLORS[ci % COLORS.length] + '22',
+          tension: 0.3,
+          pointRadius: 3,
+          fill: false,
+        });
+        ci++;
+      });
+      charts[canvasId] = new Chart(document.getElementById(canvasId), {
+        type: 'line',
+        data: { labels: dates, datasets },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          plugins: {
+            legend: { labels: { color: '#9ca3af', font: { size: 11 } } },
+            tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + fmtFn(ctx.parsed.y) } },
+          },
+          scales: {
+            x: { ticks: { color: '#9ca3af' }, grid: { color: '#2a2d3a' } },
+            y: { ticks: { color: '#9ca3af', callback: v => fmtFn(v) }, grid: { color: '#2a2d3a' } },
+          },
+        },
+      });
+    }
+
+    function buildFlowChart(canvasId, charts, dates, data) {
+      if (charts[canvasId]) charts[canvasId].destroy();
+      const totals = data.filter(d => d.colonia === '_TOTAL');
+      charts[canvasId] = new Chart(document.getElementById(canvasId), {
+        type: 'bar',
+        data: {
+          labels: dates,
+          datasets: [
+            {
+              label: 'New',
+              data: dates.map(dt => { const r = totals.find(d => d.run_date === dt); return r ? r.new_count : 0; }),
+              backgroundColor: '#22c55e88',
+              borderColor: '#22c55e',
+              borderWidth: 1,
+            },
+            {
+              label: 'Sold',
+              data: dates.map(dt => { const r = totals.find(d => d.run_date === dt); return r ? -(r.presumed_sold_count || 0) : 0; }),
+              backgroundColor: '#ef444488',
+              borderColor: '#ef4444',
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          plugins: { legend: { labels: { color: '#9ca3af' } } },
+          scales: {
+            x: { stacked: true, ticks: { color: '#9ca3af' }, grid: { color: '#2a2d3a' } },
+            y: { stacked: true, ticks: { color: '#9ca3af' }, grid: { color: '#2a2d3a' } },
+          },
+        },
+      });
+    }
+
+    function fmt(n) {
+      if (n == null || isNaN(n)) return '—';
+      return Math.round(n).toLocaleString('en-US');
+    }
+
+    init();
+  </script>
+</body>
+</html>

@@ -204,6 +204,12 @@ async def run_pipeline(run_date: date, config: dict) -> bool:
 
     export_timeseries_json(db)
 
+    # Also copy timeseries to docs/ for GitHub Pages dashboard
+    docs_data = Path("docs/data")
+    if docs_data.exists():
+        shutil.copy2("data/market_timeseries.json", docs_data / "market_timeseries.json")
+        logger.info("Copied timeseries to docs/data/ for dashboard")
+
     if Path(DB_TEMP).exists():
         shutil.move(DB_TEMP, DB_PATH)
         logger.info("Atomic DB swap complete")

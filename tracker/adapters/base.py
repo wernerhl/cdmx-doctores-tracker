@@ -110,17 +110,38 @@ class SourceAdapter(ABC):
             self.reachable = False
             return None
 
+    async def fetch_page_obj(self, browser_context, url: str):
+        """Return the live Playwright page (caller must close it)."""
+        try:
+            page = await browser_context.new_page()
+            resp = await page.goto(url, wait_until="domcontentloaded", timeout=30000)
+            if resp is None or resp.status >= 400:
+                logger.warning(f"[{self.name}] HTTP {resp.status if resp else 'None'} for {url}")
+                await page.close()
+                return None
+            return page
+        except Exception as e:
+            logger.warning(f"[{self.name}] fetch error for {url}: {e}")
+            return None
+
     async def fetch_all_listings(self, browser_context) -> list[RawListing]:
         urls = self.build_search_urls()
         all_listings: list[RawListing] = []
+        consecutive_failures = 0
         for url in urls:
             self._delay()
             page = await self.fetch(browser_context, url)
             if page is None:
+                consecutive_failures += 1
+                if consecutive_failures >= 3:
+                    logger.warning(f"[{self.name}] 3 consecutive failures — stopping")
+                    break
                 continue
+            consecutive_failures = 0
             listings = self.parse_list(page)
             all_listings.extend(listings)
             logger.info(f"[{self.name}] {url} → {len(listings)} listings")
+        self.reachable = len(all_listings) > 0 or consecutive_failures < 3
         logger.info(f"[{self.name}] total raw listings: {len(all_listings)}")
         return all_listings
 

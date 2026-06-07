@@ -11,163 +11,197 @@ from tracker.adapters.base import SourceAdapter, RawListing, RawPage
 
 logger = logging.getLogger(__name__)
 
-COLONIA_LOCATION_CODES = {
-    "Doctores": "doctores",
-    "Obrera": "obrera",
-    "Algarín": "algarin",
-    "Buenos Aires": "buenos-aires",
-    "Centro": "centro",
-    "Guerrero": "guerrero",
-    "Roma Sur": "roma-sur",
-    "Santa María la Ribera": "santa-maria-la-ribera",
-}
+# JS to extract listing cards from vivanuncios DOM
+EXTRACT_CARDS_JS = """() => {
+    const cards = document.querySelectorAll('[data-id]');
+    return Array.from(cards).map(card => {
+        const text = card.innerText || '';
+        const id = card.getAttribute('data-id') || '';
+
+        // Find detail link
+        const links = card.querySelectorAll('a[href]');
+        let detailUrl = '';
+        for (const a of links) {
+            if (a.href && (a.href.includes('/a-venta-') || a.href.includes('/d-desarrollo'))) {
+                detailUrl = a.href;
+                break;
+            }
+        }
+        if (!detailUrl && links.length > 0) detailUrl = links[0].href;
+
+        // Price — look for MN or $ prefix
+        let price = null;
+        const pm = text.match(/(?:MN|MXN|\\$)\\s*([\\d,]+(?:\\.\\d+)?)/);
+        if (pm) price = parseInt(pm[1].replace(/[,\\.]/g, ''));
+
+        // Area
+        let area = null;
+        const am = text.match(/(\\d+(?:\\.\\d+)?)\\s*m[²2]/);
+        if (am) area = parseFloat(am[1]);
+
+        // Bedrooms
+        let beds = null;
+        const bm = text.match(/(\\d+)\\s*rec/i);
+        if (bm) beds = parseInt(bm[1]);
+
+        // Bathrooms
+        let baths = null;
+        const btm = text.match(/(\\d+)\\s*ba[ñn]/i);
+        if (btm) baths = parseFloat(btm[1]);
+
+        // Parking
+        let parking = null;
+        const pkm = text.match(/(\\d+)\\s*estac/i);
+        if (pkm) parking = parseInt(pkm[1]);
+
+        // Location — last line-like text that looks like an address
+        let location = '';
+        const lines = text.split('\\n').map(l => l.trim()).filter(l => l.length > 3);
+        for (const line of lines) {
+            if (line.match(/,/) && !line.match(/^[\\d\\$MN]/) && line.length < 100) {
+                location = line;
+            }
+        }
+
+        // Title
+        let title = '';
+        const h = card.querySelector('h2, h3, [class*="title"]');
+        if (h) title = h.innerText.trim();
+
+        return { id, detailUrl, price, area, beds, baths, parking, location, title,
+                 text: text.substring(0, 600) };
+    }).filter(c => c.id && c.id.length > 4);
+}"""
 
 
 class VivanunciosAdapter(SourceAdapter):
     name = "vivanuncios"
 
     def build_search_urls(self) -> list[str]:
+        # Vivanuncios uses category codes in URLs
+        # v1 = venta, c1294 = departamentos
+        # Search across Cuauhtémoc — the site doesn't support per-colonia URL filtering
+        # well (redirects to national), so we search broadly and filter in post-processing
         urls = []
-        colonias = self.config.get("colonias", [])
-        price_min = self.config["price_min"]
-        price_max = self.config["price_max"]
-        for col in colonias:
-            slug = COLONIA_LOCATION_CODES.get(col["name"], col["name"].lower().replace(" ", "-"))
-            for page_num in range(1, 6):
-                url = (
-                    f"https://www.vivanuncios.com.mx/s-venta-departamentos/"
-                    f"cuauhtemoc/{slug}/"
-                    f"?precio_desde={price_min}&precio_hasta={price_max}"
-                    f"&recamaras=2&pagina={page_num}"
-                )
-                urls.append(url)
+        for page_num in range(1, 8):
+            url = (
+                f"https://www.vivanuncios.com.mx/s-departamentos-en-venta/"
+                f"cuauhtemoc/v1c1294p{page_num}"
+            )
+            urls.append(url)
         return urls
+
+    async def fetch(self, browser_context, url: str) -> Optional[RawPage]:
+        try:
+            page = await browser_context.new_page()
+            resp = await page.goto(url, wait_until="domcontentloaded", timeout=30000)
+            if resp is None or resp.status >= 400:
+                logger.warning(f"[{self.name}] HTTP {resp.status if resp else 'None'} for {url}")
+                self.reachable = False
+                await page.close()
+                return None
+
+            html = await page.content()
+
+            # Extract cards via JS
+            try:
+                cards_data = await page.evaluate(EXTRACT_CARDS_JS)
+            except Exception as e:
+                logger.debug(f"[{self.name}] JS eval failed: {e}")
+                cards_data = []
+
+            await page.close()
+            self._cache_page(url, html)
+
+            raw_page = RawPage(url=url, html=html, status_code=resp.status)
+            raw_page.json_data = {"cards": cards_data}
+            return raw_page
+        except Exception as e:
+            logger.warning(f"[{self.name}] fetch error: {e}")
+            self.reachable = False
+            return None
 
     def parse_list(self, page: RawPage) -> list[RawListing]:
         listings = []
 
-        json_ld_matches = re.findall(
+        # JS-extracted cards
+        cards = (page.json_data or {}).get("cards", [])
+        for card in cards:
+            if not card.get("id"):
+                continue
+            listing = RawListing(source=self.name, listing_type="sale")
+            listing.source_listing_id = str(card["id"])
+            listing.url = card.get("detailUrl", "")
+            listing.title = card.get("title", "")
+            listing.description_raw = card.get("text", "")
+            listing.price_mxn = card.get("price")
+            listing.area_m2 = card.get("area")
+            listing.bedrooms = card.get("beds")
+            listing.bathrooms = card.get("baths")
+            listing.parking = card.get("parking")
+
+            loc = card.get("location", "")
+            if "," in loc:
+                parts = [p.strip() for p in loc.split(",")]
+                listing.colonia = parts[0]
+                if len(parts) > 1:
+                    listing.alcaldia = parts[-1]
+            listing.address_raw = loc
+
+            listings.append(listing)
+
+        # Fallback: JSON-LD
+        if not listings:
+            listings = self._parse_json_ld(page.html)
+
+        return listings
+
+    def _parse_json_ld(self, html: str) -> list[RawListing]:
+        listings = []
+        json_lds = re.findall(
             r'<script[^>]*type="application/ld\+json"[^>]*>(.*?)</script>',
-            page.html, re.DOTALL
+            html, re.DOTALL
         )
-        for match in json_ld_matches:
+        for jld in json_lds:
             try:
-                data = json.loads(match)
-                if isinstance(data, dict) and data.get("@type") == "ItemList":
-                    for elem in data.get("itemListElement", []):
-                        item = elem.get("item", elem)
-                        listing = self._from_json_ld(item)
-                        if listing:
-                            listings.append(listing)
-                elif isinstance(data, dict):
-                    listing = self._from_json_ld(data)
-                    if listing:
-                        listings.append(listing)
+                data = json.loads(jld)
+                if not isinstance(data, dict):
+                    continue
+                if data.get("@type") not in ("Product", "Apartment", "RealEstateListing"):
+                    continue
+                # Skip aggregate product entries
+                if "Departamentos en venta" in data.get("name", ""):
+                    continue
+
+                listing = RawListing(source=self.name, listing_type="sale")
+                listing.url = data.get("url", "")
+                listing.title = data.get("name", "")
+                listing.description_raw = data.get("description", "")
+
+                id_m = re.search(r'/(\d{6,})', listing.url)
+                if id_m:
+                    listing.source_listing_id = id_m.group(1)
+
+                offers = data.get("offers", {})
+                if isinstance(offers, dict):
+                    price_str = re.sub(r"[^\d]", "", str(offers.get("price", "")))
+                    if price_str:
+                        listing.price_mxn = int(price_str)
+
+                if listing.source_listing_id:
+                    listings.append(listing)
             except json.JSONDecodeError:
                 continue
-
-        if not listings:
-            listings = self._parse_dom(page.html)
-
         return listings
-
-    def _from_json_ld(self, data: dict) -> Optional[RawListing]:
-        if data.get("@type") not in ("Product", "Apartment", "RealEstateListing", "Residence"):
-            return None
-        listing = RawListing(source=self.name, listing_type="sale")
-        listing.url = data.get("url", "")
-        listing.title = data.get("name", "")
-        listing.description_raw = data.get("description", "")
-
-        offers = data.get("offers", {})
-        if isinstance(offers, list):
-            offers = offers[0] if offers else {}
-        price_str = re.sub(r"[^\d.]", "", str(offers.get("price", "")))
-        if price_str:
-            listing.price_mxn = int(float(price_str))
-
-        listing.source_listing_id = data.get("sku", "") or data.get("productID", "")
-        if not listing.source_listing_id:
-            id_match = re.search(r"/(\d{5,})", listing.url)
-            if id_match:
-                listing.source_listing_id = id_match.group(1)
-
-        geo = data.get("geo", {})
-        if geo:
-            listing.lat = _safe_float(geo.get("latitude"))
-            listing.lon = _safe_float(geo.get("longitude"))
-
-        addr = data.get("address", {})
-        if isinstance(addr, dict):
-            listing.colonia = addr.get("addressLocality", "")
-            listing.alcaldia = addr.get("addressRegion", "")
-            listing.address_raw = addr.get("streetAddress", "")
-
-        self._extract_features(listing)
-        return listing
-
-    def _parse_dom(self, html: str) -> list[RawListing]:
-        listings = []
-        card_pat = re.compile(
-            r'<(?:div|article)[^>]*class="[^"]*(?:ad-card|listing|result-item)[^"]*"[^>]*>(.*?)</(?:div|article)>',
-            re.DOTALL | re.IGNORECASE
-        )
-        for m in card_pat.finditer(html):
-            card = m.group(1)
-            listing = RawListing(source=self.name, listing_type="sale")
-            listing.raw_html = card
-
-            link = re.search(r'href="([^"]*vivanuncios[^"]*)"', card)
-            if link:
-                listing.url = link.group(1)
-                if not listing.url.startswith("http"):
-                    listing.url = "https://www.vivanuncios.com.mx" + listing.url
-                id_match = re.search(r"/(\d{5,})", listing.url)
-                if id_match:
-                    listing.source_listing_id = id_match.group(1)
-
-            title_m = re.search(r'<(?:h2|h3|a)[^>]*>(.*?)</(?:h2|h3|a)>', card, re.DOTALL)
-            if title_m:
-                listing.title = re.sub(r"<[^>]+>", "", title_m.group(1)).strip()
-
-            listing.description_raw = re.sub(r"<[^>]+>", " ", card).strip()
-
-            price_m = re.search(r'\$[\s]*([\d,]+)', card)
-            if price_m:
-                listing.price_mxn = int(re.sub(r"[^\d]", "", price_m.group(1)))
-
-            self._extract_features(listing)
-            if listing.source_listing_id:
-                listings.append(listing)
-        return listings
-
-    def _extract_features(self, listing: RawListing):
-        text = f"{listing.title} {listing.description_raw} {listing.raw_html}"
-        area = re.search(r'(\d+(?:\.\d+)?)\s*m[²2]', text)
-        if area:
-            listing.area_m2 = float(area.group(1))
-        beds = re.search(r'(\d+)\s*(?:rec[áa]mara|dormitorio|hab)', text, re.IGNORECASE)
-        if beds:
-            listing.bedrooms = int(beds.group(1))
-        baths = re.search(r'(\d+(?:\.\d+)?)\s*ba[ñn]o', text, re.IGNORECASE)
-        if baths:
-            listing.bathrooms = float(baths.group(1))
-        park = re.search(r'(\d+)\s*estacionamiento', text, re.IGNORECASE)
-        if park:
-            listing.parking = int(park.group(1))
 
     async def fetch_rental_listings(self, browser_context) -> list[RawListing]:
         urls = []
-        colonias = self.config.get("colonias", [])
-        for col in colonias:
-            slug = COLONIA_LOCATION_CODES.get(col["name"], col["name"].lower().replace(" ", "-"))
-            for page_num in range(1, 4):
-                url = (
-                    f"https://www.vivanuncios.com.mx/s-renta-departamentos/"
-                    f"cuauhtemoc/{slug}/"
-                    f"?recamaras=2&pagina={page_num}"
-                )
-                urls.append(url)
+        for page_num in range(1, 4):
+            url = (
+                f"https://www.vivanuncios.com.mx/s-departamentos-en-renta/"
+                f"cuauhtemoc/v1c1294p{page_num}"
+            )
+            urls.append(url)
         all_listings = []
         for url in urls:
             self._delay()
@@ -179,12 +213,3 @@ class VivanunciosAdapter(SourceAdapter):
                 r.listing_type = "rent"
             all_listings.extend(rentals)
         return all_listings
-
-
-def _safe_float(val) -> Optional[float]:
-    if val is None:
-        return None
-    try:
-        return float(val)
-    except (ValueError, TypeError):
-        return None

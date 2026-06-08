@@ -1,0 +1,41 @@
+{
+  "fit_date": "2026-06-08",
+  "n": 99,
+  "r_squared": 0.5773,
+  "residual_se": 0.5206,
+  "z_val": 1.28,
+  "beta": [
+    8.206274,
+    0.555755,
+    -0.007571,
+    -0.012891,
+    -0.0,
+    0.0,
+    0.302369,
+    0.720642,
+    -0.699823
+  ],
+  "feature_names": [
+    "intercept",
+    "log_area_m2",
+    "bedrooms",
+    "bathrooms",
+    "parking",
+    "has_elevator",
+    "colonia_Ju\u00e1rez",
+    "colonia_Polanco",
+    "colonia_San Rafael"
+  ],
+  "colonias": [
+    "Del Valle",
+    "Ju\u00e1rez",
+    "Polanco",
+    "San Rafael"
+  ],
+  "colonia_map": {
+    "Del Valle": 0,
+    "Ju\u00e1rez": 1,
+    "Polanco": 2,
+    "San Rafael": 3
+  }
+}

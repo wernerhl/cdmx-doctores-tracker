@@ -221,46 +221,20 @@
     "median_price": 4660000
   },
   {
-    "run_date": "2026-06-22",
+    "run_date": "2026-06-23",
     "colonia": "",
-    "n_active": 32,
-    "median_price_per_m2": 58041.4723682905,
-    "p25_price_per_m2": 52823.317263242425,
-    "p75_price_per_m2": 69128.81638909035,
-    "median_gross_yield": 0.1026094293197886,
+    "n_active": 31,
+    "median_price_per_m2": 57968.10460519788,
+    "p25_price_per_m2": 52653.66336306781,
+    "p75_price_per_m2": 69179.7928099298,
+    "median_gross_yield": 0.10416101932704422,
     "median_days_on_market": 0.0,
     "new_count": 0,
     "presumed_sold_count": 0,
-    "median_price": 4726900
+    "median_price": 4700000
   },
   {
-    "run_date": "2026-06-22",
-    "colonia": "Alfredo V Bonfil",
-    "n_active": 1,
-    "median_price_per_m2": 28833.333333333332,
-    "p25_price_per_m2": 28833.333333333332,
-    "p75_price_per_m2": 28833.333333333332,
-    "median_gross_yield": 0.1698213854537144,
-    "median_days_on_market": 0.0,
-    "new_count": 0,
-    "presumed_sold_count": 0,
-    "median_price": 3460000
-  },
-  {
-    "run_date": "2026-06-22",
-    "colonia": "Canc\u00fan Centro",
-    "n_active": 1,
-    "median_price_per_m2": 43618.163636363635,
-    "p25_price_per_m2": 43618.163636363635,
-    "p75_price_per_m2": 43618.163636363635,
-    "median_gross_yield": 0.11501782950479844,
-    "median_days_on_market": 0.0,
-    "new_count": 0,
-    "presumed_sold_count": 0,
-    "median_price": 4797998
-  },
-  {
-    "run_date": "2026-06-22",
+    "run_date": "2026-06-23",
     "colonia": "Condesa",
     "n_active": 1,
     "median_price_per_m2": 94719.39379587972,
@@ -273,33 +247,7 @@
     "median_price": 4000000
   },
   {
-    "run_date": "2026-06-22",
-    "colonia": "El Vig\u00eda",
-    "n_active": 1,
-    "median_price_per_m2": 66840.0,
-    "p25_price_per_m2": 66840.0,
-    "p75_price_per_m2": 66840.0,
-    "median_gross_yield": 0.10055655387048877,
-    "median_days_on_market": 0.0,
-    "new_count": 0,
-    "presumed_sold_count": 0,
-    "median_price": 4277760
-  },
-  {
-    "run_date": "2026-06-22",
-    "colonia": "Fraccionamiento Cumbres del Lago",
-    "n_active": 1,
-    "median_price_per_m2": 36111.11111111111,
-    "p25_price_per_m2": 36111.11111111111,
-    "p75_price_per_m2": 36111.11111111111,
-    "median_gross_yield": 0.1203098103559499,
-    "median_days_on_market": 0.0,
-    "new_count": 0,
-    "presumed_sold_count": 0,
-    "median_price": 5200000
-  },
-  {
-    "run_date": "2026-06-22",
+    "run_date": "2026-06-23",
     "colonia": "Ju\u00e1rez",
     "n_active": 1,
     "median_price_per_m2": 46808.51063829787,
@@ -312,7 +260,7 @@
     "median_price": 4400000
   },
   {
-    "run_date": "2026-06-22",
+    "run_date": "2026-06-23",
     "colonia": "Narvarte",
     "n_active": 2,
     "median_price_per_m2": 54272.72727272727,
@@ -325,20 +273,7 @@
     "median_price": 5830000
   },
   {
-    "run_date": "2026-06-22",
-    "colonia": "R\u00edo Tijuana",
-    "n_active": 1,
-    "median_price_per_m2": 80000.0,
-    "p25_price_per_m2": 80000.0,
-    "p75_price_per_m2": 80000.0,
-    "median_gross_yield": 0.10905331840097769,
-    "median_days_on_market": 0.0,
-    "new_count": 0,
-    "presumed_sold_count": 0,
-    "median_price": 3200000
-  },
-  {
-    "run_date": "2026-06-22",
+    "run_date": "2026-06-23",
     "colonia": "San Rafael",
     "n_active": 4,
     "median_price_per_m2": 58505.967450271244,
@@ -351,20 +286,7 @@
     "median_price": 4357950
   },
   {
-    "run_date": "2026-06-22",
-    "colonia": "Santa Fe Cuajimalpa",
-    "n_active": 1,
-    "median_price_per_m2": 62826.77631578947,
-    "p25_price_per_m2": 62826.77631578947,
-    "p75_price_per_m2": 62826.77631578947,
-    "median_gross_yield": 0.09855101457914973,
-    "median_days_on_market": 0.0,
-    "new_count": 0,
-    "presumed_sold_count": 0,
-    "median_price": 4774835
-  },
-  {
-    "run_date": "2026-06-22",
+    "run_date": "2026-06-23",
     "colonia": "Tabacalera",
     "n_active": 1,
     "median_price_per_m2": 86486.48648648648,
@@ -377,20 +299,7 @@
     "median_price": 3200000
   },
   {
-    "run_date": "2026-06-22",
-    "colonia": "Temoz\u00f3n Norte",
-    "n_active": 1,
-    "median_price_per_m2": 44318.181818181816,
-    "p25_price_per_m2": 44318.181818181816,
-    "p75_price_per_m2": 44318.181818181816,
-    "median_gross_yield": 0.12753353483905458,
-    "median_days_on_market": 0.0,
-    "new_count": 0,
-    "presumed_sold_count": 0,
-    "median_price": 3900000
-  },
-  {
-    "run_date": "2026-06-22",
+    "run_date": "2026-06-23",
     "colonia": "Ver\u00f3nica Anz\u00fares",
     "n_active": 1,
     "median_price_per_m2": 48076.92307692308,
@@ -403,68 +312,16 @@
     "median_price": 3750000
   },
   {
-    "run_date": "2026-06-22",
-    "colonia": "Zazil Ha",
-    "n_active": 1,
-    "median_price_per_m2": 67775.0,
-    "p25_price_per_m2": 67775.0,
-    "p75_price_per_m2": 67775.0,
-    "median_gross_yield": 0.1270792822744436,
-    "median_days_on_market": 0.0,
-    "new_count": 0,
-    "presumed_sold_count": 0,
-    "median_price": 2711000
-  },
-  {
-    "run_date": "2026-06-22",
-    "colonia": "Zen Life I",
-    "n_active": 1,
-    "median_price_per_m2": 15573.77049180328,
-    "p25_price_per_m2": 15573.77049180328,
-    "p75_price_per_m2": 15573.77049180328,
-    "median_gross_yield": 0.24543653244250935,
-    "median_days_on_market": 0.0,
-    "new_count": 0,
-    "presumed_sold_count": 0,
-    "median_price": 2850000
-  },
-  {
-    "run_date": "2026-06-22",
-    "colonia": "Zona Hotelera",
-    "n_active": 1,
-    "median_price_per_m2": 0.0,
-    "p25_price_per_m2": 0.0,
-    "p75_price_per_m2": 0.0,
-    "median_gross_yield": 0.0,
-    "median_days_on_market": 0.0,
-    "new_count": 0,
-    "presumed_sold_count": 0,
-    "median_price": 0
-  },
-  {
-    "run_date": "2026-06-22",
-    "colonia": "Z\u00e1kia",
-    "n_active": 1,
-    "median_price_per_m2": 20993.15068493151,
-    "p25_price_per_m2": 20993.15068493151,
-    "p75_price_per_m2": 20993.15068493151,
-    "median_gross_yield": 0.2028053232023487,
-    "median_days_on_market": 0.0,
-    "new_count": 0,
-    "presumed_sold_count": 0,
-    "median_price": 3065000
-  },
-  {
-    "run_date": "2026-06-22",
+    "run_date": "2026-06-23",
     "colonia": "_TOTAL",
-    "n_active": 53,
-    "median_price_per_m2": 57894.73684210526,
-    "p25_price_per_m2": 48196.8773800457,
-    "p75_price_per_m2": 68400.93177370574,
-    "median_gross_yield": 0.10101117335234813,
+    "n_active": 41,
+    "median_price_per_m2": 57968.10460519788,
+    "p25_price_per_m2": 52530.09327481421,
+    "p75_price_per_m2": 69460.95571095572,
+    "median_gross_yield": 0.09401213833244332,
     "median_days_on_market": 0.0,
     "new_count": 0,
     "presumed_sold_count": 0,
-    "median_price": 4554450
+    "median_price": 4630000
   }
 ]

@@ -221,20 +221,46 @@
     "median_price": 4660000
   },
   {
-    "run_date": "2026-06-30",
+    "run_date": "2026-07-01",
     "colonia": "",
-    "n_active": 29,
-    "median_price_per_m2": 57968.10460519788,
-    "p25_price_per_m2": 52992.97116341704,
-    "p75_price_per_m2": 69077.83996825092,
-    "median_gross_yield": 0.1053334717870285,
+    "n_active": 30,
+    "median_price_per_m2": 57894.73684210526,
+    "p25_price_per_m2": 52484.00946289319,
+    "p75_price_per_m2": 69026.86354741149,
+    "median_gross_yield": 0.1068096136986497,
     "median_days_on_market": 0.0,
     "new_count": 0,
     "presumed_sold_count": 0,
-    "median_price": 4690000
+    "median_price": 4680000
   },
   {
-    "run_date": "2026-06-30",
+    "run_date": "2026-07-01",
+    "colonia": "Aldea Zama",
+    "n_active": 1,
+    "median_price_per_m2": 65789.47368421052,
+    "p25_price_per_m2": 65789.47368421052,
+    "p75_price_per_m2": 65789.47368421052,
+    "median_gross_yield": 0.13719719202822148,
+    "median_days_on_market": 0.0,
+    "new_count": 0,
+    "presumed_sold_count": 0,
+    "median_price": 2500000
+  },
+  {
+    "run_date": "2026-07-01",
+    "colonia": "Campestre Churubusco",
+    "n_active": 1,
+    "median_price_per_m2": 61624.42465753425,
+    "p25_price_per_m2": 61624.42465753425,
+    "p75_price_per_m2": 61624.42465753425,
+    "median_gross_yield": 0.10261292767076657,
+    "median_days_on_market": 0.0,
+    "new_count": 0,
+    "presumed_sold_count": 0,
+    "median_price": 4498583
+  },
+  {
+    "run_date": "2026-07-01",
     "colonia": "Condesa",
     "n_active": 1,
     "median_price_per_m2": 94719.39379587972,
@@ -247,7 +273,46 @@
     "median_price": 4000000
   },
   {
-    "run_date": "2026-06-30",
+    "run_date": "2026-07-01",
+    "colonia": "Fraccionamiento Mayorazgo",
+    "n_active": 1,
+    "median_price_per_m2": 24377.049180327867,
+    "p25_price_per_m2": 24377.049180327867,
+    "p75_price_per_m2": 24377.049180327867,
+    "median_gross_yield": 0.2881682660102272,
+    "median_days_on_market": 0.0,
+    "new_count": 0,
+    "presumed_sold_count": 0,
+    "median_price": 1487000
+  },
+  {
+    "run_date": "2026-07-01",
+    "colonia": "La Campana",
+    "n_active": 1,
+    "median_price_per_m2": 21383.64779874214,
+    "p25_price_per_m2": 21383.64779874214,
+    "p75_price_per_m2": 21383.64779874214,
+    "median_gross_yield": 0.1957947187114124,
+    "median_days_on_market": 0.0,
+    "new_count": 0,
+    "presumed_sold_count": 0,
+    "median_price": 3400000
+  },
+  {
+    "run_date": "2026-07-01",
+    "colonia": "Lomas de Angel\u00f3polis",
+    "n_active": 1,
+    "median_price_per_m2": 35882.35294117647,
+    "p25_price_per_m2": 35882.35294117647,
+    "p75_price_per_m2": 35882.35294117647,
+    "median_gross_yield": 0.16257886241007605,
+    "median_days_on_market": 0.0,
+    "new_count": 0,
+    "presumed_sold_count": 0,
+    "median_price": 3050000
+  },
+  {
+    "run_date": "2026-07-01",
     "colonia": "Narvarte",
     "n_active": 2,
     "median_price_per_m2": 54272.72727272727,
@@ -260,7 +325,59 @@
     "median_price": 5830000
   },
   {
-    "run_date": "2026-06-30",
+    "run_date": "2026-07-01",
+    "colonia": "Playa del Carmen",
+    "n_active": 2,
+    "median_price_per_m2": 64748.27599067599,
+    "p25_price_per_m2": 47366.35337995338,
+    "p75_price_per_m2": 82130.19860139862,
+    "median_gross_yield": 0.1610029320089619,
+    "median_days_on_market": 0.0,
+    "new_count": 0,
+    "presumed_sold_count": 0,
+    "median_price": 2616444
+  },
+  {
+    "run_date": "2026-07-01",
+    "colonia": "Puerto Morelos",
+    "n_active": 1,
+    "median_price_per_m2": 88375.0,
+    "p25_price_per_m2": 88375.0,
+    "p75_price_per_m2": 88375.0,
+    "median_gross_yield": 0.09939688644468561,
+    "median_days_on_market": 0.0,
+    "new_count": 0,
+    "presumed_sold_count": 0,
+    "median_price": 3535000
+  },
+  {
+    "run_date": "2026-07-01",
+    "colonia": "Punta Sam",
+    "n_active": 1,
+    "median_price_per_m2": 45454.545454545456,
+    "p25_price_per_m2": 45454.545454545456,
+    "p75_price_per_m2": 45454.545454545456,
+    "median_gross_yield": 0.11195850175267281,
+    "median_days_on_market": 0.0,
+    "new_count": 0,
+    "presumed_sold_count": 0,
+    "median_price": 5000000
+  },
+  {
+    "run_date": "2026-07-01",
+    "colonia": "Roma Norte",
+    "n_active": 1,
+    "median_price_per_m2": 110600.8085106383,
+    "p25_price_per_m2": 110600.8085106383,
+    "p75_price_per_m2": 110600.8085106383,
+    "median_gross_yield": 0.07291989562068492,
+    "median_days_on_market": 0.0,
+    "new_count": 0,
+    "presumed_sold_count": 0,
+    "median_price": 5198238
+  },
+  {
+    "run_date": "2026-07-01",
     "colonia": "San Rafael",
     "n_active": 4,
     "median_price_per_m2": 58505.967450271244,
@@ -273,7 +390,7 @@
     "median_price": 4357950
   },
   {
-    "run_date": "2026-06-30",
+    "run_date": "2026-07-01",
     "colonia": "Tabacalera",
     "n_active": 1,
     "median_price_per_m2": 86486.48648648648,
@@ -286,7 +403,7 @@
     "median_price": 3200000
   },
   {
-    "run_date": "2026-06-30",
+    "run_date": "2026-07-01",
     "colonia": "Ver\u00f3nica Anz\u00fares",
     "n_active": 1,
     "median_price_per_m2": 48076.92307692308,
@@ -299,16 +416,16 @@
     "median_price": 3750000
   },
   {
-    "run_date": "2026-06-30",
+    "run_date": "2026-07-01",
     "colonia": "_TOTAL",
-    "n_active": 38,
-    "median_price_per_m2": 58041.4723682905,
-    "p25_price_per_m2": 53162.62506359166,
-    "p75_price_per_m2": 69230.76923076923,
-    "median_gross_yield": 0.09556910756095748,
+    "n_active": 49,
+    "median_price_per_m2": 57968.10460519788,
+    "p25_price_per_m2": 48266.523483824705,
+    "p75_price_per_m2": 70100.65416382333,
+    "median_gross_yield": 0.10123818451155411,
     "median_days_on_market": 0.0,
     "new_count": 0,
     "presumed_sold_count": 0,
-    "median_price": 4639450
+    "median_price": 4442000
   }
 ]

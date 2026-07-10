@@ -221,46 +221,20 @@
     "median_price": 4660000
   },
   {
-    "run_date": "2026-07-09",
+    "run_date": "2026-07-10",
     "colonia": "",
-    "n_active": 30,
-    "median_price_per_m2": 57281.553398058255,
-    "p25_price_per_m2": 48316.83168316832,
-    "p75_price_per_m2": 69026.86354741149,
-    "median_gross_yield": 0.10942633621992116,
+    "n_active": 29,
+    "median_price_per_m2": 57588.145120081754,
+    "p25_price_per_m2": 51442.21501796197,
+    "p75_price_per_m2": 69077.83996825092,
+    "median_gross_yield": 0.10870516796441668,
     "median_days_on_market": 0.0,
     "new_count": 0,
     "presumed_sold_count": 0,
-    "median_price": 4680000
+    "median_price": 4690000
   },
   {
-    "run_date": "2026-07-09",
-    "colonia": "Bello Horizonte",
-    "n_active": 1,
-    "median_price_per_m2": 27556.86440677966,
-    "p25_price_per_m2": 27556.86440677966,
-    "p75_price_per_m2": 27556.86440677966,
-    "median_gross_yield": 0.18656220836259452,
-    "median_days_on_market": 0.0,
-    "new_count": 0,
-    "presumed_sold_count": 0,
-    "median_price": 3251710
-  },
-  {
-    "run_date": "2026-07-09",
-    "colonia": "Centro",
-    "n_active": 1,
-    "median_price_per_m2": 68157.8947368421,
-    "p25_price_per_m2": 68157.8947368421,
-    "p75_price_per_m2": 68157.8947368421,
-    "median_gross_yield": 0.12939725185890372,
-    "median_days_on_market": 0.0,
-    "new_count": 0,
-    "presumed_sold_count": 0,
-    "median_price": 2590000
-  },
-  {
-    "run_date": "2026-07-09",
+    "run_date": "2026-07-10",
     "colonia": "Condesa",
     "n_active": 1,
     "median_price_per_m2": 94719.39379587972,
@@ -273,20 +247,7 @@
     "median_price": 4000000
   },
   {
-    "run_date": "2026-07-09",
-    "colonia": "Del Carmen",
-    "n_active": 1,
-    "median_price_per_m2": 65421.875,
-    "p25_price_per_m2": 65421.875,
-    "p75_price_per_m2": 65421.875,
-    "median_gross_yield": 0.1048216284317072,
-    "median_days_on_market": 0.0,
-    "new_count": 0,
-    "presumed_sold_count": 0,
-    "median_price": 4187000
-  },
-  {
-    "run_date": "2026-07-09",
+    "run_date": "2026-07-10",
     "colonia": "Del Valle",
     "n_active": 1,
     "median_price_per_m2": 76709.64582993308,
@@ -299,46 +260,7 @@
     "median_price": 4700000
   },
   {
-    "run_date": "2026-07-09",
-    "colonia": "El Lechugal",
-    "n_active": 1,
-    "median_price_per_m2": 0.0,
-    "p25_price_per_m2": 0.0,
-    "p75_price_per_m2": 0.0,
-    "median_gross_yield": 0.0,
-    "median_days_on_market": 0.0,
-    "new_count": 0,
-    "presumed_sold_count": 0,
-    "median_price": 4730000
-  },
-  {
-    "run_date": "2026-07-09",
-    "colonia": "Fraccionamiento Zar\u00fa",
-    "n_active": 1,
-    "median_price_per_m2": 27662.33766233766,
-    "p25_price_per_m2": 27662.33766233766,
-    "p75_price_per_m2": 27662.33766233766,
-    "median_gross_yield": 0.22723031820777442,
-    "median_days_on_market": 0.0,
-    "new_count": 0,
-    "presumed_sold_count": 0,
-    "median_price": 2130000
-  },
-  {
-    "run_date": "2026-07-09",
-    "colonia": "Juan Manuel Vallarta",
-    "n_active": 1,
-    "median_price_per_m2": 45714.276190476194,
-    "p25_price_per_m2": 45714.276190476194,
-    "p75_price_per_m2": 45714.276190476194,
-    "median_gross_yield": 0.11881549321487507,
-    "median_days_on_market": 0.0,
-    "new_count": 0,
-    "presumed_sold_count": 0,
-    "median_price": 4799999
-  },
-  {
-    "run_date": "2026-07-09",
+    "run_date": "2026-07-10",
     "colonia": "Ju\u00e1rez",
     "n_active": 1,
     "median_price_per_m2": 46808.51063829787,
@@ -351,33 +273,7 @@
     "median_price": 4400000
   },
   {
-    "run_date": "2026-07-09",
-    "colonia": "Lindavista",
-    "n_active": 1,
-    "median_price_per_m2": 56666.666666666664,
-    "p25_price_per_m2": 56666.666666666664,
-    "p75_price_per_m2": 56666.666666666664,
-    "median_gross_yield": 0.11230773768676862,
-    "median_days_on_market": 0.0,
-    "new_count": 0,
-    "presumed_sold_count": 0,
-    "median_price": 4250000
-  },
-  {
-    "run_date": "2026-07-09",
-    "colonia": "Lomas de Santa Fe",
-    "n_active": 1,
-    "median_price_per_m2": 55543.47826086957,
-    "p25_price_per_m2": 55543.47826086957,
-    "p75_price_per_m2": 55543.47826086957,
-    "median_gross_yield": 0.11989826842371176,
-    "median_days_on_market": 0.0,
-    "new_count": 0,
-    "presumed_sold_count": 0,
-    "median_price": 3832500
-  },
-  {
-    "run_date": "2026-07-09",
+    "run_date": "2026-07-10",
     "colonia": "Narvarte",
     "n_active": 1,
     "median_price_per_m2": 52545.454545454544,
@@ -390,7 +286,7 @@
     "median_price": 5780000
   },
   {
-    "run_date": "2026-07-09",
+    "run_date": "2026-07-10",
     "colonia": "San Rafael",
     "n_active": 4,
     "median_price_per_m2": 58505.967450271244,
@@ -403,7 +299,7 @@
     "median_price": 4357950
   },
   {
-    "run_date": "2026-07-09",
+    "run_date": "2026-07-10",
     "colonia": "Tabacalera",
     "n_active": 1,
     "median_price_per_m2": 86486.48648648648,
@@ -416,42 +312,16 @@
     "median_price": 3200000
   },
   {
-    "run_date": "2026-07-09",
-    "colonia": "Tulum",
-    "n_active": 1,
-    "median_price_per_m2": 28725.0,
-    "p25_price_per_m2": 28725.0,
-    "p75_price_per_m2": 28725.0,
-    "median_gross_yield": 0.2997030187107971,
-    "median_days_on_market": 0.0,
-    "new_count": 0,
-    "presumed_sold_count": 0,
-    "median_price": 1149000
-  },
-  {
-    "run_date": "2026-07-09",
-    "colonia": "Z\u00e1kia",
-    "n_active": 1,
-    "median_price_per_m2": 20993.15068493151,
-    "p25_price_per_m2": 20993.15068493151,
-    "p75_price_per_m2": 20993.15068493151,
-    "median_gross_yield": 0.220178404424778,
-    "median_days_on_market": 0.0,
-    "new_count": 0,
-    "presumed_sold_count": 0,
-    "median_price": 3065000
-  },
-  {
-    "run_date": "2026-07-09",
+    "run_date": "2026-07-10",
     "colonia": "_TOTAL",
-    "n_active": 49,
-    "median_price_per_m2": 57058.44572896596,
-    "p25_price_per_m2": 48096.26098135847,
-    "p75_price_per_m2": 68592.3791421268,
-    "median_gross_yield": 0.10959481138264911,
+    "n_active": 38,
+    "median_price_per_m2": 58041.4723682905,
+    "p25_price_per_m2": 52545.454545454544,
+    "p75_price_per_m2": 72710.30896298563,
+    "median_gross_yield": 0.10277327488230849,
     "median_days_on_market": 0.0,
     "new_count": 0,
     "presumed_sold_count": 0,
-    "median_price": 4442000
+    "median_price": 4639450
   }
 ]

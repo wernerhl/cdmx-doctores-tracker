@@ -1,0 +1,49 @@
+{
+  "fit_date": "2026-07-27",
+  "n": 99,
+  "r_squared": 0.6106,
+  "residual_se": 0.5301,
+  "z_val": 1.28,
+  "beta": [
+    8.192288,
+    0.571635,
+    0.015005,
+    -0.034847,
+    -0.0,
+    0.0,
+    0.096296,
+    0.230355,
+    0.345407,
+    -0.370808,
+    -0.392839
+  ],
+  "feature_names": [
+    "intercept",
+    "log_area_m2",
+    "bedrooms",
+    "bathrooms",
+    "parking",
+    "has_elevator",
+    "colonia_Ju\u00e1rez",
+    "colonia_Polanco",
+    "colonia_Roma Sur",
+    "colonia_Tabacalera",
+    "colonia_Ver\u00f3nica Anz\u00fares"
+  ],
+  "colonias": [
+    "Del Valle",
+    "Ju\u00e1rez",
+    "Polanco",
+    "Roma Sur",
+    "Tabacalera",
+    "Ver\u00f3nica Anz\u00fares"
+  ],
+  "colonia_map": {
+    "Del Valle": 0,
+    "Ju\u00e1rez": 1,
+    "Polanco": 2,
+    "Roma Sur": 3,
+    "Tabacalera": 4,
+    "Ver\u00f3nica Anz\u00fares": 5
+  }
+}

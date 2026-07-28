@@ -221,20 +221,59 @@
     "median_price": 4660000
   },
   {
-    "run_date": "2026-07-27",
+    "run_date": "2026-07-28",
     "colonia": "",
-    "n_active": 30,
-    "median_price_per_m2": 57281.553398058255,
-    "p25_price_per_m2": 47565.46644844517,
-    "p75_price_per_m2": 69026.86354741149,
-    "median_gross_yield": 0.11299377496788215,
+    "n_active": 34,
+    "median_price_per_m2": 55617.97752808989,
+    "p25_price_per_m2": 42391.30434782609,
+    "p75_price_per_m2": 67044.1001191895,
+    "median_gross_yield": 0.11509975177568793,
     "median_days_on_market": 0.0,
     "new_count": 0,
     "presumed_sold_count": 0,
-    "median_price": 4660000
+    "median_price": 4471000
   },
   {
-    "run_date": "2026-07-27",
+    "run_date": "2026-07-28",
+    "colonia": "Aquiles Serd\u00e1n",
+    "n_active": 1,
+    "median_price_per_m2": 28823.529411764706,
+    "p25_price_per_m2": 28823.529411764706,
+    "p75_price_per_m2": 28823.529411764706,
+    "median_gross_yield": 0.24930603165767456,
+    "median_days_on_market": 0.0,
+    "new_count": 0,
+    "presumed_sold_count": 0,
+    "median_price": 1960000
+  },
+  {
+    "run_date": "2026-07-28",
+    "colonia": "Canc\u00fan",
+    "n_active": 3,
+    "median_price_per_m2": 43912.80222437137,
+    "p25_price_per_m2": 37638.219294003866,
+    "p75_price_per_m2": 50187.38515473888,
+    "median_gross_yield": 0.14273455355327824,
+    "median_days_on_market": 0.0,
+    "new_count": 0,
+    "presumed_sold_count": 0,
+    "median_price": 4378712
+  },
+  {
+    "run_date": "2026-07-28",
+    "colonia": "Carola",
+    "n_active": 1,
+    "median_price_per_m2": 63333.333333333336,
+    "p25_price_per_m2": 63333.333333333336,
+    "p75_price_per_m2": 63333.333333333336,
+    "median_gross_yield": 0.11792772748691234,
+    "median_days_on_market": 0.0,
+    "new_count": 0,
+    "presumed_sold_count": 0,
+    "median_price": 3800000
+  },
+  {
+    "run_date": "2026-07-28",
     "colonia": "Condesa",
     "n_active": 1,
     "median_price_per_m2": 94719.39379587972,
@@ -247,7 +286,33 @@
     "median_price": 4000000
   },
   {
-    "run_date": "2026-07-27",
+    "run_date": "2026-07-28",
+    "colonia": "Del Valle Norte",
+    "n_active": 1,
+    "median_price_per_m2": 78333.33333333333,
+    "p25_price_per_m2": 78333.33333333333,
+    "p75_price_per_m2": 78333.33333333333,
+    "median_gross_yield": 0.09208052959983212,
+    "median_days_on_market": 0.0,
+    "new_count": 0,
+    "presumed_sold_count": 0,
+    "median_price": 4700000
+  },
+  {
+    "run_date": "2026-07-28",
+    "colonia": "Ejidal",
+    "n_active": 1,
+    "median_price_per_m2": 36363.63636363636,
+    "p25_price_per_m2": 36363.63636363636,
+    "p75_price_per_m2": 36363.63636363636,
+    "median_gross_yield": 0.21001565920625698,
+    "median_days_on_market": 0.0,
+    "new_count": 0,
+    "presumed_sold_count": 0,
+    "median_price": 2000000
+  },
+  {
+    "run_date": "2026-07-28",
     "colonia": "Narvarte",
     "n_active": 2,
     "median_price_per_m2": 56947.32620320856,
@@ -260,7 +325,7 @@
     "median_price": 5155500
   },
   {
-    "run_date": "2026-07-27",
+    "run_date": "2026-07-28",
     "colonia": "N\u00e1poles",
     "n_active": 1,
     "median_price_per_m2": 108108.17142857143,
@@ -273,7 +338,20 @@
     "median_price": 3783786
   },
   {
-    "run_date": "2026-07-27",
+    "run_date": "2026-07-28",
+    "colonia": "Playa del Carmen",
+    "n_active": 1,
+    "median_price_per_m2": 91457.77272727272,
+    "p25_price_per_m2": 91457.77272727272,
+    "p75_price_per_m2": 91457.77272727272,
+    "median_gross_yield": 0.09187793400262335,
+    "median_days_on_market": 0.0,
+    "new_count": 0,
+    "presumed_sold_count": 0,
+    "median_price": 4024142
+  },
+  {
+    "run_date": "2026-07-28",
     "colonia": "Roma Sur",
     "n_active": 1,
     "median_price_per_m2": 83333.33333333333,
@@ -286,7 +364,7 @@
     "median_price": 4250000
   },
   {
-    "run_date": "2026-07-27",
+    "run_date": "2026-07-28",
     "colonia": "San Rafael",
     "n_active": 4,
     "median_price_per_m2": 58505.967450271244,
@@ -299,16 +377,29 @@
     "median_price": 4357950
   },
   {
-    "run_date": "2026-07-27",
-    "colonia": "_TOTAL",
-    "n_active": 39,
-    "median_price_per_m2": 58207.20968629609,
-    "p25_price_per_m2": 48962.62376237624,
-    "p75_price_per_m2": 71841.35506247921,
-    "median_gross_yield": 0.11111170967623431,
+    "run_date": "2026-07-28",
+    "colonia": "Zona Valle Poniente",
+    "n_active": 1,
+    "median_price_per_m2": 29891.304347826088,
+    "p25_price_per_m2": 29891.304347826088,
+    "p75_price_per_m2": 29891.304347826088,
+    "median_gross_yield": 0.1569455736141701,
     "median_days_on_market": 0.0,
     "new_count": 0,
     "presumed_sold_count": 0,
-    "median_price": 4608900
+    "median_price": 5500000
+  },
+  {
+    "run_date": "2026-07-28",
+    "colonia": "_TOTAL",
+    "n_active": 52,
+    "median_price_per_m2": 57169.99956351211,
+    "p25_price_per_m2": 43022.2918201916,
+    "p75_price_per_m2": 69179.7928099298,
+    "median_gross_yield": 0.1130313471860374,
+    "median_days_on_market": 0.0,
+    "new_count": 0,
+    "presumed_sold_count": 0,
+    "median_price": 4273412
   }
 ]

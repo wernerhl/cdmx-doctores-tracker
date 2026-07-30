@@ -221,20 +221,20 @@
     "median_price": 4660000
   },
   {
-    "run_date": "2026-07-29",
+    "run_date": "2026-07-30",
     "colonia": "",
-    "n_active": 32,
-    "median_price_per_m2": 57058.44572896596,
-    "p25_price_per_m2": 46068.73822975518,
-    "p75_price_per_m2": 68035.4818333005,
-    "median_gross_yield": 0.11306891940419284,
+    "n_active": 31,
+    "median_price_per_m2": 57169.99956351211,
+    "p25_price_per_m2": 47308.033278777955,
+    "p75_price_per_m2": 68531.17269035599,
+    "median_gross_yield": 0.1130313471860375,
     "median_days_on_market": 0.0,
     "new_count": 0,
     "presumed_sold_count": 0,
-    "median_price": 4660000
+    "median_price": 4650000
   },
   {
-    "run_date": "2026-07-29",
+    "run_date": "2026-07-30",
     "colonia": "Condesa",
     "n_active": 1,
     "median_price_per_m2": 94719.39379587972,
@@ -247,7 +247,7 @@
     "median_price": 4000000
   },
   {
-    "run_date": "2026-07-29",
+    "run_date": "2026-07-30",
     "colonia": "Narvarte",
     "n_active": 2,
     "median_price_per_m2": 56947.32620320856,
@@ -260,7 +260,7 @@
     "median_price": 5155500
   },
   {
-    "run_date": "2026-07-29",
+    "run_date": "2026-07-30",
     "colonia": "N\u00e1poles",
     "n_active": 1,
     "median_price_per_m2": 108108.17142857143,
@@ -273,7 +273,7 @@
     "median_price": 3783786
   },
   {
-    "run_date": "2026-07-29",
+    "run_date": "2026-07-30",
     "colonia": "Roma Sur",
     "n_active": 1,
     "median_price_per_m2": 83333.33333333333,
@@ -286,7 +286,7 @@
     "median_price": 4250000
   },
   {
-    "run_date": "2026-07-29",
+    "run_date": "2026-07-30",
     "colonia": "San Rafael",
     "n_active": 4,
     "median_price_per_m2": 58505.967450271244,
@@ -299,16 +299,16 @@
     "median_price": 4357950
   },
   {
-    "run_date": "2026-07-29",
+    "run_date": "2026-07-30",
     "colonia": "_TOTAL",
-    "n_active": 41,
-    "median_price_per_m2": 58057.69270588439,
-    "p25_price_per_m2": 47978.0657764567,
-    "p75_price_per_m2": 70100.9645080059,
-    "median_gross_yield": 0.1118990974129572,
+    "n_active": 40,
+    "median_price_per_m2": 58073.913043478264,
+    "p25_price_per_m2": 48216.21528448109,
+    "p75_price_per_m2": 70971.15978524255,
+    "median_gross_yield": 0.11126767144324493,
     "median_days_on_market": 0.0,
     "new_count": 0,
     "presumed_sold_count": 0,
-    "median_price": 4608900
+    "median_price": 4554450
   }
 ]

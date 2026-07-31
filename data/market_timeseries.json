@@ -221,20 +221,33 @@
     "median_price": 4660000
   },
   {
-    "run_date": "2026-07-30",
+    "run_date": "2026-07-31",
     "colonia": "",
-    "n_active": 31,
+    "n_active": 33,
     "median_price_per_m2": 57169.99956351211,
-    "p25_price_per_m2": 47308.033278777955,
-    "p75_price_per_m2": 68531.17269035599,
-    "median_gross_yield": 0.1130313471860375,
+    "p25_price_per_m2": 46645.4802259887,
+    "p75_price_per_m2": 69077.83996825092,
+    "median_gross_yield": 0.1130313471860374,
     "median_days_on_market": 0.0,
     "new_count": 0,
     "presumed_sold_count": 0,
-    "median_price": 4650000
+    "median_price": 4500000
   },
   {
-    "run_date": "2026-07-30",
+    "run_date": "2026-07-31",
+    "colonia": "Anzures",
+    "n_active": 1,
+    "median_price_per_m2": 32956.52173913043,
+    "p25_price_per_m2": 32956.52173913043,
+    "p75_price_per_m2": 32956.52173913043,
+    "median_gross_yield": 0.1623763239977828,
+    "median_days_on_market": 0.0,
+    "new_count": 0,
+    "presumed_sold_count": 0,
+    "median_price": 3790000
+  },
+  {
+    "run_date": "2026-07-31",
     "colonia": "Condesa",
     "n_active": 1,
     "median_price_per_m2": 94719.39379587972,
@@ -247,7 +260,72 @@
     "median_price": 4000000
   },
   {
-    "run_date": "2026-07-30",
+    "run_date": "2026-07-31",
+    "colonia": "El Lechugal",
+    "n_active": 1,
+    "median_price_per_m2": 0.0,
+    "p25_price_per_m2": 0.0,
+    "p75_price_per_m2": 0.0,
+    "median_gross_yield": 0.0,
+    "median_days_on_market": 0.0,
+    "new_count": 0,
+    "presumed_sold_count": 0,
+    "median_price": 4730000
+  },
+  {
+    "run_date": "2026-07-31",
+    "colonia": "Escand\u00f3n I Secci\u00f3n",
+    "n_active": 1,
+    "median_price_per_m2": 18684.21052631579,
+    "p25_price_per_m2": 18684.21052631579,
+    "p75_price_per_m2": 18684.21052631579,
+    "median_gross_yield": 0.24396807408244914,
+    "median_days_on_market": 0.0,
+    "new_count": 0,
+    "presumed_sold_count": 0,
+    "median_price": 3550000
+  },
+  {
+    "run_date": "2026-07-31",
+    "colonia": "Fraccionamiento Lomas Del Country",
+    "n_active": 1,
+    "median_price_per_m2": 66363.63636363637,
+    "p25_price_per_m2": 66363.63636363637,
+    "p75_price_per_m2": 66363.63636363637,
+    "median_gross_yield": 0.11681682486850194,
+    "median_days_on_market": 0.0,
+    "new_count": 0,
+    "presumed_sold_count": 0,
+    "median_price": 3650000
+  },
+  {
+    "run_date": "2026-07-31",
+    "colonia": "Guadalajara Centro",
+    "n_active": 1,
+    "median_price_per_m2": 83333.33333333333,
+    "p25_price_per_m2": 83333.33333333333,
+    "p75_price_per_m2": 83333.33333333333,
+    "median_gross_yield": 0.10286497177711026,
+    "median_days_on_market": 0.0,
+    "new_count": 0,
+    "presumed_sold_count": 0,
+    "median_price": 3500000
+  },
+  {
+    "run_date": "2026-07-31",
+    "colonia": "La Lejona",
+    "n_active": 1,
+    "median_price_per_m2": 31920.90395480226,
+    "p25_price_per_m2": 31920.90395480226,
+    "p75_price_per_m2": 31920.90395480226,
+    "median_gross_yield": 0.13936915136415015,
+    "median_days_on_market": 0.0,
+    "new_count": 0,
+    "presumed_sold_count": 0,
+    "median_price": 5650000
+  },
+  {
+    "run_date": "2026-07-31",
     "colonia": "Narvarte",
     "n_active": 2,
     "median_price_per_m2": 56947.32620320856,
@@ -260,7 +338,7 @@
     "median_price": 5155500
   },
   {
-    "run_date": "2026-07-30",
+    "run_date": "2026-07-31",
     "colonia": "N\u00e1poles",
     "n_active": 1,
     "median_price_per_m2": 108108.17142857143,
@@ -273,7 +351,7 @@
     "median_price": 3783786
   },
   {
-    "run_date": "2026-07-30",
+    "run_date": "2026-07-31",
     "colonia": "Roma Sur",
     "n_active": 1,
     "median_price_per_m2": 83333.33333333333,
@@ -286,7 +364,7 @@
     "median_price": 4250000
   },
   {
-    "run_date": "2026-07-30",
+    "run_date": "2026-07-31",
     "colonia": "San Rafael",
     "n_active": 4,
     "median_price_per_m2": 58505.967450271244,
@@ -299,16 +377,68 @@
     "median_price": 4357950
   },
   {
-    "run_date": "2026-07-30",
-    "colonia": "_TOTAL",
-    "n_active": 40,
-    "median_price_per_m2": 58073.913043478264,
-    "p25_price_per_m2": 48216.21528448109,
-    "p75_price_per_m2": 70971.15978524255,
-    "median_gross_yield": 0.11126767144324493,
+    "run_date": "2026-07-31",
+    "colonia": "Temoz\u00f3n Norte",
+    "n_active": 1,
+    "median_price_per_m2": 27717.391304347828,
+    "p25_price_per_m2": 27717.391304347828,
+    "p75_price_per_m2": 27717.391304347828,
+    "median_gross_yield": 0.21669148739692157,
     "median_days_on_market": 0.0,
     "new_count": 0,
     "presumed_sold_count": 0,
-    "median_price": 4554450
+    "median_price": 2550000
+  },
+  {
+    "run_date": "2026-07-31",
+    "colonia": "Tlacoquemecatl",
+    "n_active": 1,
+    "median_price_per_m2": 58900.0,
+    "p25_price_per_m2": 58900.0,
+    "p75_price_per_m2": 58900.0,
+    "median_gross_yield": 0.09839360699746812,
+    "median_days_on_market": 0.0,
+    "new_count": 0,
+    "presumed_sold_count": 0,
+    "median_price": 5890000
+  },
+  {
+    "run_date": "2026-07-31",
+    "colonia": "Tulum",
+    "n_active": 1,
+    "median_price_per_m2": 74213.0,
+    "p25_price_per_m2": 74213.0,
+    "p75_price_per_m2": 74213.0,
+    "median_gross_yield": 0.15872076406514535,
+    "median_days_on_market": 0.0,
+    "new_count": 0,
+    "presumed_sold_count": 0,
+    "median_price": 1484260
+  },
+  {
+    "run_date": "2026-07-31",
+    "colonia": "Z\u00e1kia",
+    "n_active": 1,
+    "median_price_per_m2": 27904.761904761905,
+    "p25_price_per_m2": 27904.761904761905,
+    "p75_price_per_m2": 27904.761904761905,
+    "median_gross_yield": 0.2237896302479399,
+    "median_days_on_market": 0.0,
+    "new_count": 0,
+    "presumed_sold_count": 0,
+    "median_price": 2344000
+  },
+  {
+    "run_date": "2026-07-31",
+    "colonia": "_TOTAL",
+    "n_active": 52,
+    "median_price_per_m2": 58057.69270588439,
+    "p25_price_per_m2": 45491.996233521655,
+    "p75_price_per_m2": 71841.35506247921,
+    "median_gross_yield": 0.1130313471860374,
+    "median_days_on_market": 0.0,
+    "new_count": 0,
+    "presumed_sold_count": 0,
+    "median_price": 4261706
   }
 ]

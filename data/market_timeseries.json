@@ -221,7 +221,7 @@
     "median_price": 4660000
   },
   {
-    "run_date": "2026-08-10",
+    "run_date": "2026-08-11",
     "colonia": "",
     "n_active": 37,
     "median_price_per_m2": 59549.55738347043,
@@ -234,7 +234,7 @@
     "median_price": 4690000
   },
   {
-    "run_date": "2026-08-10",
+    "run_date": "2026-08-11",
     "colonia": "Condesa",
     "n_active": 1,
     "median_price_per_m2": 94719.39379587972,
@@ -247,7 +247,7 @@
     "median_price": 4000000
   },
   {
-    "run_date": "2026-08-10",
+    "run_date": "2026-08-11",
     "colonia": "Del Valle",
     "n_active": 1,
     "median_price_per_m2": 76750.0,
@@ -260,7 +260,7 @@
     "median_price": 4681750
   },
   {
-    "run_date": "2026-08-10",
+    "run_date": "2026-08-11",
     "colonia": "Narvarte",
     "n_active": 1,
     "median_price_per_m2": 50900.0,
@@ -273,7 +273,7 @@
     "median_price": 5599000
   },
   {
-    "run_date": "2026-08-10",
+    "run_date": "2026-08-11",
     "colonia": "N\u00e1poles",
     "n_active": 1,
     "median_price_per_m2": 108108.17142857143,
@@ -286,7 +286,7 @@
     "median_price": 3783786
   },
   {
-    "run_date": "2026-08-10",
+    "run_date": "2026-08-11",
     "colonia": "San Rafael",
     "n_active": 4,
     "median_price_per_m2": 58505.967450271244,
@@ -299,7 +299,7 @@
     "median_price": 4357950
   },
   {
-    "run_date": "2026-08-10",
+    "run_date": "2026-08-11",
     "colonia": "_TOTAL",
     "n_active": 45,
     "median_price_per_m2": 59549.55738347043,

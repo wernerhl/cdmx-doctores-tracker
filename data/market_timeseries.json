@@ -221,20 +221,20 @@
     "median_price": 4660000
   },
   {
-    "run_date": "2026-08-26",
+    "run_date": "2026-08-27",
     "colonia": "",
     "n_active": 34,
     "median_price_per_m2": 59869.565217391304,
     "p25_price_per_m2": 51578.94736842105,
     "p75_price_per_m2": 72711.55033971588,
-    "median_gross_yield": 0.11080119226044269,
+    "median_gross_yield": 0.11235379086100006,
     "median_days_on_market": 0.0,
     "new_count": 0,
     "presumed_sold_count": 0,
     "median_price": 4680000
   },
   {
-    "run_date": "2026-08-26",
+    "run_date": "2026-08-27",
     "colonia": "Condesa",
     "n_active": 1,
     "median_price_per_m2": 94719.39379587972,
@@ -247,7 +247,7 @@
     "median_price": 4000000
   },
   {
-    "run_date": "2026-08-26",
+    "run_date": "2026-08-27",
     "colonia": "Del Valle",
     "n_active": 2,
     "median_price_per_m2": 76729.82291496654,
@@ -260,7 +260,7 @@
     "median_price": 4690875
   },
   {
-    "run_date": "2026-08-26",
+    "run_date": "2026-08-27",
     "colonia": "Narvarte",
     "n_active": 1,
     "median_price_per_m2": 50900.0,
@@ -273,7 +273,7 @@
     "median_price": 5599000
   },
   {
-    "run_date": "2026-08-26",
+    "run_date": "2026-08-27",
     "colonia": "N\u00e1poles",
     "n_active": 1,
     "median_price_per_m2": 108108.17142857143,
@@ -286,7 +286,7 @@
     "median_price": 3783786
   },
   {
-    "run_date": "2026-08-26",
+    "run_date": "2026-08-27",
     "colonia": "Roma Sur",
     "n_active": 1,
     "median_price_per_m2": 83333.33333333333,
@@ -299,7 +299,7 @@
     "median_price": 4250000
   },
   {
-    "run_date": "2026-08-26",
+    "run_date": "2026-08-27",
     "colonia": "San Rafael",
     "n_active": 5,
     "median_price_per_m2": 58671.42857142857,
@@ -312,13 +312,13 @@
     "median_price": 4107000
   },
   {
-    "run_date": "2026-08-26",
+    "run_date": "2026-08-27",
     "colonia": "_TOTAL",
     "n_active": 45,
     "median_price_per_m2": 63831.14977015124,
     "p25_price_per_m2": 52257.743939275155,
     "p75_price_per_m2": 76719.7343724498,
-    "median_gross_yield": 0.11004102041305494,
+    "median_gross_yield": 0.11157749156072137,
     "median_days_on_market": 0.0,
     "new_count": 0,
     "presumed_sold_count": 0,

@@ -221,20 +221,20 @@
     "median_price": 4660000
   },
   {
-    "run_date": "2026-09-04",
+    "run_date": "2026-09-05",
     "colonia": "",
     "n_active": 33,
     "median_price_per_m2": 65180.124223602485,
     "p25_price_per_m2": 56599.8044459782,
     "p75_price_per_m2": 78025.47309353104,
-    "median_gross_yield": 0.10218639331002709,
+    "median_gross_yield": 0.10218639331002718,
     "median_days_on_market": 0.0,
     "new_count": 0,
     "presumed_sold_count": 0,
     "median_price": 4670000
   },
   {
-    "run_date": "2026-09-04",
+    "run_date": "2026-09-05",
     "colonia": "Condesa",
     "n_active": 1,
     "median_price_per_m2": 94719.39379587972,
@@ -247,20 +247,20 @@
     "median_price": 4000000
   },
   {
-    "run_date": "2026-09-04",
+    "run_date": "2026-09-05",
     "colonia": "Del Valle",
     "n_active": 1,
     "median_price_per_m2": 76709.64582993308,
     "p25_price_per_m2": 76709.64582993308,
     "p75_price_per_m2": 76709.64582993308,
-    "median_gross_yield": 0.10386590973624905,
+    "median_gross_yield": 0.10386590973624923,
     "median_days_on_market": 0.0,
     "new_count": 0,
     "presumed_sold_count": 0,
     "median_price": 4700000
   },
   {
-    "run_date": "2026-09-04",
+    "run_date": "2026-09-05",
     "colonia": "Narvarte",
     "n_active": 2,
     "median_price_per_m2": 56947.32620320856,
@@ -273,7 +273,7 @@
     "median_price": 5155500
   },
   {
-    "run_date": "2026-09-04",
+    "run_date": "2026-09-05",
     "colonia": "N\u00e1poles",
     "n_active": 1,
     "median_price_per_m2": 108108.17142857143,
@@ -286,20 +286,20 @@
     "median_price": 3783786
   },
   {
-    "run_date": "2026-09-04",
+    "run_date": "2026-09-05",
     "colonia": "Roma Sur",
     "n_active": 1,
     "median_price_per_m2": 83333.33333333333,
     "p25_price_per_m2": 83333.33333333333,
     "p75_price_per_m2": 83333.33333333333,
-    "median_gross_yield": 0.15712793851408183,
+    "median_gross_yield": 0.15712793851408208,
     "median_days_on_market": 0.0,
     "new_count": 0,
     "presumed_sold_count": 0,
     "median_price": 4250000
   },
   {
-    "run_date": "2026-09-04",
+    "run_date": "2026-09-05",
     "colonia": "San Rafael",
     "n_active": 3,
     "median_price_per_m2": 58671.42857142857,
@@ -312,7 +312,7 @@
     "median_price": 4107000
   },
   {
-    "run_date": "2026-09-04",
+    "run_date": "2026-09-05",
     "colonia": "_TOTAL",
     "n_active": 42,
     "median_price_per_m2": 65217.391304347824,

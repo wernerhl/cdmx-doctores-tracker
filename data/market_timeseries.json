@@ -221,7 +221,7 @@
     "median_price": 4660000
   },
   {
-    "run_date": "2026-09-09",
+    "run_date": "2026-09-10",
     "colonia": "",
     "n_active": 34,
     "median_price_per_m2": 59869.565217391304,
@@ -234,7 +234,7 @@
     "median_price": 4530000
   },
   {
-    "run_date": "2026-09-09",
+    "run_date": "2026-09-10",
     "colonia": "Del Valle",
     "n_active": 2,
     "median_price_per_m2": 76729.82291496654,
@@ -247,7 +247,7 @@
     "median_price": 4690875
   },
   {
-    "run_date": "2026-09-09",
+    "run_date": "2026-09-10",
     "colonia": "Narvarte",
     "n_active": 1,
     "median_price_per_m2": 50900.0,
@@ -260,7 +260,7 @@
     "median_price": 5599000
   },
   {
-    "run_date": "2026-09-09",
+    "run_date": "2026-09-10",
     "colonia": "N\u00e1poles",
     "n_active": 1,
     "median_price_per_m2": 108108.17142857143,
@@ -273,7 +273,7 @@
     "median_price": 3783786
   },
   {
-    "run_date": "2026-09-09",
+    "run_date": "2026-09-10",
     "colonia": "Roma Sur",
     "n_active": 1,
     "median_price_per_m2": 83333.33333333333,
@@ -286,7 +286,7 @@
     "median_price": 4250000
   },
   {
-    "run_date": "2026-09-09",
+    "run_date": "2026-09-10",
     "colonia": "San Rafael",
     "n_active": 2,
     "median_price_per_m2": 58505.967450271244,
@@ -299,7 +299,7 @@
     "median_price": 4357950
   },
   {
-    "run_date": "2026-09-09",
+    "run_date": "2026-09-10",
     "colonia": "Tabacalera",
     "n_active": 1,
     "median_price_per_m2": 86486.48648648648,
@@ -312,7 +312,7 @@
     "median_price": 3200000
   },
   {
-    "run_date": "2026-09-09",
+    "run_date": "2026-09-10",
     "colonia": "_TOTAL",
     "n_active": 42,
     "median_price_per_m2": 62519.442397445346,

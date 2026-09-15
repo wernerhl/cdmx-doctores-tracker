@@ -221,20 +221,20 @@
     "median_price": 4660000
   },
   {
-    "run_date": "2026-09-14",
+    "run_date": "2026-09-15",
     "colonia": "",
-    "n_active": 35,
-    "median_price_per_m2": 63831.14977015124,
-    "p25_price_per_m2": 54880.43823436012,
-    "p75_price_per_m2": 75466.43413581568,
-    "median_gross_yield": 0.11810622938137597,
+    "n_active": 38,
+    "median_price_per_m2": 63493.82716049383,
+    "p25_price_per_m2": 52484.00946289319,
+    "p75_price_per_m2": 75983.31346841478,
+    "median_gross_yield": 0.11831644360627162,
     "median_days_on_market": 0.0,
     "new_count": 0,
     "presumed_sold_count": 0,
-    "median_price": 4560000
+    "median_price": 4530000
   },
   {
-    "run_date": "2026-09-14",
+    "run_date": "2026-09-15",
     "colonia": "Del Valle",
     "n_active": 2,
     "median_price_per_m2": 76729.82291496654,
@@ -247,7 +247,7 @@
     "median_price": 4690875
   },
   {
-    "run_date": "2026-09-14",
+    "run_date": "2026-09-15",
     "colonia": "Narvarte",
     "n_active": 1,
     "median_price_per_m2": 50900.0,
@@ -260,7 +260,7 @@
     "median_price": 5599000
   },
   {
-    "run_date": "2026-09-14",
+    "run_date": "2026-09-15",
     "colonia": "N\u00e1poles",
     "n_active": 1,
     "median_price_per_m2": 108108.17142857143,
@@ -273,7 +273,7 @@
     "median_price": 3783786
   },
   {
-    "run_date": "2026-09-14",
+    "run_date": "2026-09-15",
     "colonia": "Roma Sur",
     "n_active": 1,
     "median_price_per_m2": 83333.33333333333,
@@ -286,20 +286,20 @@
     "median_price": 4250000
   },
   {
-    "run_date": "2026-09-14",
+    "run_date": "2026-09-15",
     "colonia": "San Rafael",
     "n_active": 3,
     "median_price_per_m2": 58671.42857142857,
     "p25_price_per_m2": 58505.967450271244,
-    "p75_price_per_m2": 73591.8118466899,
-    "median_gross_yield": 0.1210546037132206,
+    "p75_price_per_m2": 60825.24729698643,
+    "median_gross_yield": 0.1256613448342917,
     "median_days_on_market": 0.0,
     "new_count": 0,
     "presumed_sold_count": 0,
     "median_price": 4107000
   },
   {
-    "run_date": "2026-09-14",
+    "run_date": "2026-09-15",
     "colonia": "Tabacalera",
     "n_active": 1,
     "median_price_per_m2": 86486.48648648648,
@@ -312,16 +312,16 @@
     "median_price": 3200000
   },
   {
-    "run_date": "2026-09-14",
+    "run_date": "2026-09-15",
     "colonia": "_TOTAL",
-    "n_active": 44,
-    "median_price_per_m2": 65217.391304347824,
-    "p25_price_per_m2": 56141.163162990444,
-    "p75_price_per_m2": 78488.61931725599,
-    "median_gross_yield": 0.11737070176196596,
+    "n_active": 47,
+    "median_price_per_m2": 64318.34215167549,
+    "p25_price_per_m2": 55548.34523036989,
+    "p75_price_per_m2": 77359.24515235456,
+    "median_gross_yield": 0.11810622938137597,
     "median_days_on_market": 0.0,
     "new_count": 0,
     "presumed_sold_count": 0,
-    "median_price": 4530000
+    "median_price": 4500000
   }
 ]

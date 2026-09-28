@@ -1,0 +1,45 @@
+{
+  "fit_date": "2026-09-28",
+  "n": 100,
+  "r_squared": 0.6174,
+  "residual_se": 0.6379,
+  "z_val": 1.28,
+  "beta": [
+    7.81051,
+    0.649543,
+    0.028194,
+    -0.027067,
+    -0.0,
+    0.0,
+    0.22436,
+    0.275544,
+    0.102341,
+    -0.368778
+  ],
+  "feature_names": [
+    "intercept",
+    "log_area_m2",
+    "bedrooms",
+    "bathrooms",
+    "parking",
+    "has_elevator",
+    "colonia_Ju\u00e1rez",
+    "colonia_Polanco",
+    "colonia_Roma Sur",
+    "colonia_Tabacalera"
+  ],
+  "colonias": [
+    "Condesa",
+    "Ju\u00e1rez",
+    "Polanco",
+    "Roma Sur",
+    "Tabacalera"
+  ],
+  "colonia_map": {
+    "Condesa": 0,
+    "Ju\u00e1rez": 1,
+    "Polanco": 2,
+    "Roma Sur": 3,
+    "Tabacalera": 4
+  }
+}

@@ -221,20 +221,20 @@
     "median_price": 4660000
   },
   {
-    "run_date": "2026-10-13",
+    "run_date": "2026-10-14",
     "colonia": "",
-    "n_active": 37,
+    "n_active": 39,
     "median_price_per_m2": 65217.391304347824,
-    "p25_price_per_m2": 48115.59888579387,
-    "p75_price_per_m2": 75983.31346841478,
+    "p25_price_per_m2": 48883.69056685889,
+    "p75_price_per_m2": 76772.82016911043,
     "median_gross_yield": 0.12759590038331645,
     "median_days_on_market": 0.0,
     "new_count": 0,
     "presumed_sold_count": 0,
-    "median_price": 4390000
+    "median_price": 4442000
   },
   {
-    "run_date": "2026-10-13",
+    "run_date": "2026-10-14",
     "colonia": "Del Valle",
     "n_active": 1,
     "median_price_per_m2": 80245.90163934426,
@@ -247,29 +247,29 @@
     "median_price": 4895000
   },
   {
-    "run_date": "2026-10-13",
+    "run_date": "2026-10-14",
     "colonia": "San Rafael",
-    "n_active": 2,
-    "median_price_per_m2": 60659.786175829104,
-    "p25_price_per_m2": 59500.14625247152,
-    "p75_price_per_m2": 61819.42609918669,
-    "median_gross_yield": 0.1281381370693862,
+    "n_active": 3,
+    "median_price_per_m2": 58340.50632911392,
+    "p25_price_per_m2": 56824.837386305364,
+    "p75_price_per_m2": 60659.786175829104,
+    "median_gross_yield": 0.12487936321840942,
     "median_days_on_market": 0.0,
     "new_count": 0,
     "presumed_sold_count": 0,
-    "median_price": 4259950
+    "median_price": 4608900
   },
   {
-    "run_date": "2026-10-13",
+    "run_date": "2026-10-14",
     "colonia": "_TOTAL",
-    "n_active": 40,
-    "median_price_per_m2": 65180.124223602485,
-    "p25_price_per_m2": 48266.523483824705,
-    "p75_price_per_m2": 76378.0668187626,
-    "median_gross_yield": 0.12898586941241694,
+    "n_active": 43,
+    "median_price_per_m2": 65142.857142857145,
+    "p25_price_per_m2": 50967.27945672132,
+    "p75_price_per_m2": 76772.82016911043,
+    "median_gross_yield": 0.12759590038331645,
     "median_days_on_market": 0.0,
     "new_count": 0,
     "presumed_sold_count": 0,
-    "median_price": 4445000
+    "median_price": 4500000
   }
 ]

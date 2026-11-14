@@ -221,20 +221,20 @@
     "median_price": 4660000
   },
   {
-    "run_date": "2026-11-13",
+    "run_date": "2026-11-14",
     "colonia": "",
-    "n_active": 46,
-    "median_price_per_m2": 61801.30247376312,
-    "p25_price_per_m2": 47653.89972144847,
-    "p75_price_per_m2": 69951.92307692308,
-    "median_gross_yield": 0.12083169552943236,
+    "n_active": 47,
+    "median_price_per_m2": 62519.442397445346,
+    "p25_price_per_m2": 48216.21528448109,
+    "p75_price_per_m2": 70377.49287749288,
+    "median_gross_yield": 0.12019941222780971,
     "median_days_on_market": 0.0,
     "new_count": 0,
     "presumed_sold_count": 0,
-    "median_price": 4360011
+    "median_price": 4254000
   },
   {
-    "run_date": "2026-11-13",
+    "run_date": "2026-11-14",
     "colonia": "Del Valle",
     "n_active": 1,
     "median_price_per_m2": 80245.90163934426,
@@ -247,7 +247,7 @@
     "median_price": 4895000
   },
   {
-    "run_date": "2026-11-13",
+    "run_date": "2026-11-14",
     "colonia": "N\u00e1poles",
     "n_active": 1,
     "median_price_per_m2": 78947.36842105263,
@@ -260,7 +260,7 @@
     "median_price": 6000000
   },
   {
-    "run_date": "2026-11-13",
+    "run_date": "2026-11-14",
     "colonia": "San Rafael",
     "n_active": 7,
     "median_price_per_m2": 62289.156626506025,
@@ -273,16 +273,16 @@
     "median_price": 4107000
   },
   {
-    "run_date": "2026-11-13",
+    "run_date": "2026-11-14",
     "colonia": "_TOTAL",
-    "n_active": 55,
-    "median_price_per_m2": 62289.156626506025,
-    "p25_price_per_m2": 48216.21528448109,
-    "p75_price_per_m2": 70377.49287749288,
-    "median_gross_yield": 0.11875399787218976,
+    "n_active": 56,
+    "median_price_per_m2": 62749.25420999482,
+    "p25_price_per_m2": 48884.00617597201,
+    "p75_price_per_m2": 73371.36791329739,
+    "median_gross_yield": 0.11842420308256277,
     "median_days_on_market": 0.0,
     "new_count": 0,
     "presumed_sold_count": 0,
-    "median_price": 4383023
+    "median_price": 4295500
   }
 ]
